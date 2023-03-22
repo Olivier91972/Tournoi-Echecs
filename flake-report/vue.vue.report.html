@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: vue\vue.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="vue.vue.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               vue\vue.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F841">
+               <span class="count sev-1">
+                  11
+               </span>
+               <strong>F841:</strong> local variable 'id_t' is assigned to but never used
+               
+                  (and 7 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Local variable 'id_t' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l161">
+                  <tt><i>161</i>             <span class="n">id_t</span> <span class="o">=</span> <span class="n">idx</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'index' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l288">
+                  <tt><i>288</i>             <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'idtn' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l1073">
+                  <tt><i>1073</i>         <span class="n">idtn</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Entrez l&#39;idtn du tournoi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># afficher liste des tournois !!!!!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'index' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l1297">
+                  <tt><i>1297</i>             <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'joueurs_idx' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l1298">
+                  <tt><i>1298</i>             <span class="n">joueurs_idx</span> <span class="o">=</span> <span class="p">[]</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'liste_ljr1' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l1431">
+                  <tt><i>1431</i>                     <span class="n">liste_ljr1</span> <span class="o">=</span> <span class="n">arr</span>  <span class="c1"># Ok [arr] -le tuple ou liste ne passe pas en variable!!!!!!!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'liste_num_f' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l1442">
+                  <tt><i>1442</i>                     <span class="n">liste_num_f</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">liste_num</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;[]&quot;</span><span class="p">,</span> <span class="s2">&quot;()&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'index' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l1634">
+                  <tt><i>1634</i>                     <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'joueurs_idx' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l1635">
+                  <tt><i>1635</i>                     <span class="n">joueurs_idx</span> <span class="o">=</span> <span class="p">[]</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'selection_points' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l1653">
+                  <tt><i>1653</i>                         <span class="n">selection_points</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'yonj' is assigned to but never used:</p>
+               
+               <a href="vue.vue.source.html#l1654">
+                  <tt><i>1654</i>                         <span class="n">yonj</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Veuillez confirmer (1: oui) ou recommencer (o) ?</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  3
+               </span>
+               <strong>F401:</strong> 'os' imported but unused
+               
+                  (and 2 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>'os' imported but unused:</p>
+               
+               <a href="vue.vue.source.html#l3">
+                  <tt><i>3</i> <span class="kn">import</span> <span class="nn">os</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'pickle' imported but unused:</p>
+               
+               <a href="vue.vue.source.html#l5">
+                  <tt><i>5</i> <span class="kn">import</span> <span class="nn">pickle</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'tours.Tours' imported but unused:</p>
+               
+               <a href="vue.vue.source.html#l22">
+                  <tt><i>22</i> <span class="kn">from</span> <span class="nn">tours</span> <span class="kn">import</span> <span class="n">Tours</span><span class="p">,</span> <span class="n">tour1</span><span class="p">,</span> <span class="n">tour2</span><span class="p">,</span> <span class="n">tour3</span><span class="p">,</span> <span class="n">tour4</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F541">
+               <span class="count sev-1">
+                  1
+               </span>
+               <strong>F541:</strong> f-string is missing placeholders
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l1831">
+                  <tt><i>1831</i>             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Liste des joueurs :</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E265">
+               <span class="count sev-2">
+                  75
+               </span>
+               <strong>E265:</strong> block comment should start with '# '
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l126">
+                  <tt><i>126</i>         <span class="c1">#tournoi = Tournoi(nom_tournoi, lieu, date_debut, idn)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l140">
+                  <tt><i>140</i>             <span class="c1">#print(tournoi.nom_tournoi, tournoi.lieu, tournoi.date_debut, tournoi.idn, tournoi.nb_tours)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l154">
+                  <tt><i>154</i>             <span class="c1">#print(datatournois)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l159">
+                  <tt><i>159</i>             <span class="c1">#print(tournoi.nom_tournoi, tournoi.lieu, tournoi.date_debut, tournoi.idn, tournoi.nb_tours)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l218">
+                  <tt><i>218</i>                 <span class="c1">#print(datatournois)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l225">
+                  <tt><i>225</i>         <span class="c1">#Afficher les tournois dispo</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l226">
+                  <tt><i>226</i>         <span class="c1">#Sélectionner l&#39;id du tournoi puis le démarrer</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l230">
+                  <tt><i>230</i>         <span class="c1">#print(datatournois)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l244">
+                  <tt><i>244</i>             <span class="c1">#tournoi.lj_r2 = datatournois[f&#39;{i}&#39;][0][&quot;lj_r2&quot;]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l245">
+                  <tt><i>245</i>             <span class="c1">#tournoi.lj_r3 = datatournois[f&#39;{i}&#39;][0][&quot;lj_r3&quot;]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l246">
+                  <tt><i>246</i>             <span class="c1">#tournoi.lj_r4 = datatournois[f&#39;{i}&#39;][0][&quot;lj_r4&quot;]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l271">
+                  <tt><i>271</i>             <span class="c1">#print(listej)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l324">
+                  <tt><i>324</i>             <span class="c1">#print(tournoi.idtn)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l348">
+                  <tt><i>348</i>         <span class="c1">#Sinon</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l349">
+                  <tt><i>349</i>         <span class="c1">#raise TypeError(f&#39;Object of type {o.__class__.__name__} &#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l350">
+                  <tt><i>350</i>         <span class="c1">#TypeError: Object of type type is not JSON serializable</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l398">
+                  <tt><i>398</i>             <span class="c1">#print(dir(tour1))  # lister les détails d&#39;un objet</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l464">
+                  <tt><i>464</i>         <span class="c1">#print(datatournois)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l488">
+                  <tt><i>488</i>         <span class="c1">#----------MATCH 1 ----- ROUND X ----------</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l491">
+                  <tt><i>491</i>         <span class="c1">#----------MATCH 2 ----- ROUND X ----------</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l560">
+                  <tt><i>560</i>         <span class="c1">#print(match_m1_r1.lj_r1)  # on doit obtenir la liste des joueurs du round 1 à jour!!!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l578">
+                  <tt><i>578</i>         <span class="c1">#print(match_m1_r1.lj_r1)  # on doit obtenir la liste des joueurs du round 1 à jour!!!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l625">
+                  <tt><i>625</i>         <span class="c1">#update_tournoi(datatournois)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l713">
+                  <tt><i>713</i>         <span class="c1">#print(f&#39;classement{classement}&#39;)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l776">
+                  <tt><i>776</i>         <span class="c1">#print(tournoi.lj_r2)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l787">
+                  <tt><i>787</i>         <span class="c1">#print(liste_dj1)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l788">
+                  <tt><i>788</i>         <span class="c1">#print(liste_dj2)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l802">
+                  <tt><i>802</i>         <span class="c1">#----------MATCH 1 ----- ROUND 2 ----------</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l805">
+                  <tt><i>805</i>         <span class="c1">#----------MATCH 2 ----- ROUND 2 ----------</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l874">
+                  <tt><i>874</i>         <span class="c1">#print(match_m1_r1.lj_r1)  # on doit obtenir la liste des joueurs du round 1 à jour - ok !</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l892">
+                  <tt><i>892</i>         <span class="c1">#print(match_m1_r1.lj_r1)  # on doit obtenir la liste des joueurs du round 1 à jour - ok!</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l939">
+                  <tt><i>939</i>         <span class="c1">#update_tournoi(datatournois)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1027">
+                  <tt><i>1027</i>         <span class="c1">#print(f&#39;classement{classement}&#39;)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1071">
+                  <tt><i>1071</i>         <span class="c1">#print(datatournois)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1147">
+                  <tt><i>1147</i>         <span class="c1">#print(datatournois)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1284">
+                  <tt><i>1284</i>                 <span class="c1">#print(listej)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1313">
+                  <tt><i>1313</i>             <span class="c1">#liste_nombres = [int(x) for x in input_idx.split(&quot;,&quot;)]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1413">
+                  <tt><i>1413</i>                     <span class="c1">#print(datatournois)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1429">
+                  <tt><i>1429</i>                     <span class="c1">#print(tuple(arr))</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1432">
+                  <tt><i>1432</i>                     <span class="c1">#tournoi.lj_r1 = liste_ljr1</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1435">
+                  <tt><i>1435</i>                     <span class="c1">#print(&quot;idtn&quot;, tournoi.idtn)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1436">
+                  <tt><i>1436</i>                     <span class="c1">#print(tournoi.nom_tournoi)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1440">
+                  <tt><i>1440</i>                         <span class="c1">#print(num)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1443">
+                  <tt><i>1443</i>                     <span class="c1">#print(f&#39;liste_num_f: {liste_num_f}&#39;)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1445">
+                  <tt><i>1445</i>                     <span class="c1">#datatournois[f&#39;{tournoi.num_tour_actuel}&#39;][0][&quot;lj_r1&quot;] = str(liste_num_f)  #En str car en int ça passe pas!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1446">
+                  <tt><i>1446</i>                     <span class="c1">#print(&quot;arr&quot;, arr)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1452">
+                  <tt><i>1452</i>                     <span class="c1">#print(paires_joueurs)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1465">
+                  <tt><i>1465</i>                     <span class="c1">#print(tournoi.lj_r1)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1527">
+                  <tt><i>1527</i>             <span class="c1">#idt_tournoi = len(datatournois) - 1  # le dernier de la liste est l&#39;actuel</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1560">
+                  <tt><i>1560</i>             <span class="c1">#print(tournoi.num_tour_actuel)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1568">
+                  <tt><i>1568</i>                 <span class="c1">#print(datajoueurs)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1576">
+                  <tt><i>1576</i>                 <span class="c1">#print(tournoi.lj_r1)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1579">
+                  <tt><i>1579</i>                 <span class="c1">#a = tournoi.lj_r1</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1580">
+                  <tt><i>1580</i>                 <span class="c1">#print(list(map(str, a)))</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1588">
+                  <tt><i>1588</i>                 <span class="c1">#orig_list.sort(key=lambda x: x.count, reverse=True)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1636">
+                  <tt><i>1636</i>                     <span class="c1">#print(&quot;### Tip&#39;s pour import des 8 premiers joueurs: 0,1,2,3,4,5,6,7 ###&quot;)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1649">
+                  <tt><i>1649</i>                         <span class="c1">#tournoi.num_tour_actuel = input_idrnd  # numéro du Round pour la sélection</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1658">
+                  <tt><i>1658</i>                         <span class="c1">#liste_nombres = None  # récupérer la liste</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1661">
+                  <tt><i>1661</i>                         <span class="c1">#tournoi.lj_r1 = str(liste_num_f)  # En str car en int ça passe pas!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1688">
+                  <tt><i>1688</i>                         <span class="c1">#tournoi.num_tour_actuel += 1  # pour passer au auto au round suivant</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1759">
+                  <tt><i>1759</i>         <span class="c1">#generer_paires([2, 4, 6, 8])  # [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1804">
+                  <tt><i>1804</i>                 <span class="c1">#print(joueur.idx, joueur.nom, joueur.prenom)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1810">
+                  <tt><i>1810</i>                 <span class="c1">#print(joueur.nom, joueur.prenom)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1828">
+                  <tt><i>1828</i>             <span class="c1">#for i in datajoueurs[&quot;0&quot;]:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1829">
+                  <tt><i>1829</i>                 <span class="c1">#print(datajoueurs[&quot;0&quot;][0][&quot;nom&quot;], datajoueurs[&quot;0&quot;][0][&quot;prenom&quot;])</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1832">
+                  <tt><i>1832</i>                   <span class="c1">#f&quot;{joueur.nom} - {joueur.prenom} - {joueur.daten}&quot;)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1845">
+                  <tt><i>1845</i>         <span class="c1">#else:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1846">
+                  <tt><i>1846</i>             <span class="c1">#print(&quot;prlm lecture joueurs.json&quot;)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1847">
+                  <tt><i>1847</i>             <span class="c1">#print(os.getcwd())</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1858">
+                  <tt><i>1858</i>         <span class="c1">#joueur = Joueur(nom, prenom, daten)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1878">
+                  <tt><i>1878</i>         <span class="c1">#Changer répertoire de travail !!!</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1879">
+                  <tt><i>1879</i>         <span class="c1">#print(os.getcwd())</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1880">
+                  <tt><i>1880</i>         <span class="c1">#os.chdir(&quot;\\Users\olivier\PycharmProjects\projects\Tournoi-Echecs\modele&quot;)  # Corriger chemin Guillaume!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1881">
+                  <tt><i>1881</i>         <span class="c1">#print(os.getcwd())</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1882">
+                  <tt><i>1882</i>         <span class="c1">#open(&quot;modele/data/tournaments/joueurs.json&quot;, &quot;w+&quot;)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E303">
+               <span class="count sev-2">
+                  19
+               </span>
+               <strong>E303:</strong> too many blank lines (3)
+               
+                  (and 2 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="vue.vue.source.html#l27">
+                  <tt><i>27</i> <span class="k">def</span> <span class="nf">date_heure_now</span><span class="p">():</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="vue.vue.source.html#l260">
+                  <tt><i>260</i> <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="vue.vue.source.html#l286">
+                  <tt><i>286</i>         <span class="n">rep</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="vue.vue.source.html#l488">
+                  <tt><i>488</i>         <span class="c1">#----------MATCH 1 ----- ROUND X ----------</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="vue.vue.source.html#l802">
+                  <tt><i>802</i>         <span class="c1">#----------MATCH 1 ----- ROUND 2 ----------</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="vue.vue.source.html#l1063">
+                  <tt><i>1063</i>     <span class="k">def</span> <span class="nf">liste_matchs_autres_auto</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="vue.vue.source.html#l1182">
+                  <tt><i>1182</i> <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="vue.vue.source.html#l1455">
+                  <tt><i>1455</i>                     <span class="c1"># Afficher les paires de joueurs</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="vue.vue.source.html#l1469">
+                  <tt><i>1469</i> <span class="w">                    </span><span class="sd">&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="vue.vue.source.html#l1477">
+                  <tt><i>1477</i>                     <span class="c1"># Afficher les paires de couleurs des joueurs</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="vue.vue.source.html#l1495">
+                  <tt><i>1495</i> <span class="w">                    </span><span class="sd">&quot;&quot;&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="vue.vue.source.html#l1652">
+                  <tt><i>1652</i>                         <span class="c1"># récupérer la liste Joueurs/scores du round précédent pour total points/classement !!!!!!!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="vue.vue.source.html#l1688">
+                  <tt><i>1688</i>                         <span class="c1">#tournoi.num_tour_actuel += 1  # pour passer au auto au round suivant</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (4):</p>
+               
+               <a href="vue.vue.source.html#l1749">
+                  <tt><i>1749</i>     <span class="k">def</span> <span class="nf">generer_paires</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="vue.vue.source.html#l1764">
+                  <tt><i>1764</i>     <span class="k">def</span> <span class="nf">generer_paires_couleur</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">):</span> <span class="c1"># Pas utilisé !!!!!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="vue.vue.source.html#l1778">
+                  <tt><i>1778</i>     <span class="k">def</span> <span class="nf">trier_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="vue.vue.source.html#l1845">
+                  <tt><i>1845</i>         <span class="c1">#else:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="vue.vue.source.html#l1853">
+                  <tt><i>1853</i>     <span class="k">def</span> <span class="nf">ajouter_joueur</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="vue.vue.source.html#l2035">
+                  <tt><i>2035</i>     <span class="c1"># with open(&quot;../modele/data/tournaments/joueurs.json&quot;, &quot;w&quot;) as f:</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W293">
+               <span class="count sev-2">
+                  5
+               </span>
+               <strong>W293:</strong> blank line contains whitespace
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l1325">
+                  <tt><i>1325</i> <span class="sd">            </span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1418">
+                  <tt><i>1418</i> <span class="sd">    </span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1424">
+                  <tt><i>1424</i> <span class="sd">    </span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1428">
+                  <tt><i>1428</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1498">
+                  <tt><i>1498</i> <span class="sd">    </span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E262">
+               <span class="count sev-2">
+                  3
+               </span>
+               <strong>E262:</strong> inline comment should start with '# '
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l91">
+                  <tt><i>91</i>     <span class="k">def</span> <span class="nf">afficher_infos_tournoi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tournoi</span><span class="p">):</span>  <span class="c1">#passer liste de tournois, dans tab vide</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l759">
+                  <tt><i>759</i>         <span class="n">num_round</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#input(&quot;Entrez le numéro du round:\n&quot;)  # peut etre ...afficher liste des round</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1410">
+                  <tt><i>1410</i>                     <span class="n">tournoi</span><span class="o">.</span><span class="n">idtn</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#Tournoi 1 par défaut !!!!!</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  3
+               </span>
+               <strong>E501:</strong> line too long (130 > 119 characters)
+               
+                  (and 2 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (130 > 119 characters):</p>
+               
+               <a href="vue.vue.source.html#l1445">
+                  <tt><i>1445</i>                     <span class="c1">#datatournois[f&#39;{tournoi.num_tour_actuel}&#39;][0][&quot;lj_r1&quot;] = str(liste_num_f)  #En str car en int ça passe pas!!!</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (121 > 119 characters):</p>
+               
+               <a href="vue.vue.source.html#l1597">
+                  <tt><i>1597</i> <span class="sd">                indices = [&quot;1&quot;, &quot;5&quot;, &quot;4&quot;, &quot;2&quot;, &quot;7&quot;, &quot;3&quot;, &quot;6&quot;, &quot;0&quot;] # A filtrer pour selectionner les joueurs !!!! key err</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (138 > 119 characters):</p>
+               
+               <a href="vue.vue.source.html#l1606">
+                  <tt><i>1606</i>                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;---------- Liste des joueurs sélectionnés pour le Round</span><span class="si">{</span><span class="n">tournoi</span><span class="o">.</span><span class="n">num_tour_actuel</span><span class="si">}</span><span class="s2">----------&quot;</span><span class="p">)</span>  <span class="c1"># A trier par points</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E116">
+               <span class="count sev-2">
+                  2
+               </span>
+               <strong>E116:</strong> unexpected indentation (comment)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l1829">
+                  <tt><i>1829</i>                 <span class="c1">#print(datajoueurs[&quot;0&quot;][0][&quot;nom&quot;], datajoueurs[&quot;0&quot;][0][&quot;prenom&quot;])</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1832">
+                  <tt><i>1832</i>                   <span class="c1">#f&quot;{joueur.nom} - {joueur.prenom} - {joueur.daten}&quot;)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E261">
+               <span class="count sev-2">
+                  2
+               </span>
+               <strong>E261:</strong> at least two spaces before inline comment
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l780">
+                  <tt><i>780</i>         <span class="k">for</span> <span class="n">jy</span> <span class="ow">in</span> <span class="n">tournoi</span><span class="o">.</span><span class="n">lj_r2</span><span class="p">:</span> <span class="c1"># liste lj_r2 en fct des points, reste attribution dejajoue !!!</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="vue.vue.source.html#l1764">
+                  <tt><i>1764</i>     <span class="k">def</span> <span class="nf">generer_paires_couleur</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">):</span> <span class="c1"># Pas utilisé !!!!!!!</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E114">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E114:</strong> indentation is not a multiple of 4 (comment)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l1832">
+                  <tt><i>1832</i>                   <span class="c1">#f&quot;{joueur.nom} - {joueur.prenom} - {joueur.daten}&quot;)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E124">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E124:</strong> closing bracket does not match visual indentation
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l1921">
+                  <tt><i>1921</i>             <span class="p">}]}</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E301">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E301:</strong> expected 1 blank line, found 0
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l1849">
+                  <tt><i>1849</i>     <span class="k">def</span> <span class="nf">afficher_joueurs_tournoi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E302">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E302:</strong> expected 2 blank lines, found 1
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l2042">
+                  <tt><i>2042</i> <span class="k">def</span> <span class="nf">quitter</span><span class="p">():</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W391">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>W391:</strong> blank line at end of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="vue.vue.source.html#l2098">
+                  <tt><i>2098</i> &nbsp;</tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>
