@@ -198,6 +198,40 @@ class Vue:
         return input_idx
 
     @staticmethod
+    def prompt_quest_liste_match():
+        """Permet à l'utilisateur de saisir manuellement ou non les scores des joueurs"""
+        rep_scores = int(input("\n----------[Scores]----------\n"
+                                "Souhaitez vous ajouter les scores manuellement ?\n"
+                               "1: Oui\n"
+                               "0: Non\n"))
+        #return rep_scores
+
+    @staticmethod
+    def prompt_scores_liste_match():
+        """Permet à l'utilisateur de saisir les scores des joueurs"""
+        score0 = float(input("\n----------[Scores]----------\n"
+                           "Entrez le score du joueur0\n"
+                           "1.0\n"
+                           "0.5\n"
+                           "0.0\n"))
+        score2 = float(input("\n----------[Scores]----------\n"
+                           "Entrez le score du joueur2\n"
+                           "1.0\n"
+                           "0.5\n"
+                           "0.0\n"))
+        score4 = float(input("\n----------[Scores]----------\n"
+                           "Entrez le score du joueur4\n"
+                           "1.0\n"
+                           "0.5\n"
+                           "0.0\n"))
+        score6 = float(input("\n----------[Scores]----------\n"
+                           "Entrez le score du joueur6\n"
+                           "1.0\n"
+                           "0.5\n"
+                           "0.0\n"))
+        return score0, score2, score4, score6
+
+    @staticmethod
     def afficher_paires_joueurs(xr, paires_joueurs):
         """Affiche les paires de joueurs"""
 

@@ -71,7 +71,7 @@ class Controleur:
                 elif "ajouter" in user_option.lower():
                     self.ajouter_joueur()
                 elif "tournoi" in user_option.lower():
-                    self.creer_tour1()  # ne pas oublier de démarrer que si len(datajoueurs)>=8
+                    self.creer_tour1()  # ne pas oublier de démarrer que si len(datajoueurs)<=8
                     # Et empécher de démarrer si len(input
                 elif "round" in user_option.lower():
                     self.demarrer_round()
@@ -1048,19 +1048,48 @@ class Controleur:
         for i in liste_joueurs:
             setattr(match, "joueur" + str(i), liste_joueurs[i])
 
-        a = 1.0
-        b = 0.5
-        c = 0.0
-        x = [a, b, c]
-        random.choice(x)
-        score0 = random.choice([a, b, c])
-        score2 = random.choice([a, b, c])
-        score4 = random.choice([a, b, c])
-        score6 = random.choice([a, b, c])
-        match.score0 = score0
-        match.score2 = score2
-        match.score4 = score4
-        match.score6 = score6
+        rep_scores = self.vue.prompt_quest_liste_match()
+        score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+
+        # retourne 1: oui ou 2: non
+        if rep_scores == 1:  # manuel
+            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+            match.score0 = score0
+            match.score2 = score2
+            match.score4 = score4
+            match.score6 = score6
+
+        elif rep_scores == 0:  # Automatique
+            self.infos = "infos"
+            # a = 1.0
+            # b = 0.5
+            # c = 0.0
+            # x = [a, b, c]
+            # random.choice(x)
+            # score0 = random.choice([a, b, c])
+            # score2 = random.choice([a, b, c])
+            # score4 = random.choice([a, b, c])
+            # score6 = random.choice([a, b, c])
+            # match.score0 = score0
+            # match.score2 = score2
+            # match.score4 = score4
+            # match.score6 = score6
+
+        # Score retourne "1: 1.0\n" "2: 0.5\n" "3: 0.0\n
+        # else:
+        #     a = 1.0
+        #     b = 0.5
+        #     c = 0.0
+        #     x = [a, b, c]
+        #     random.choice(x)
+        #     score0 = random.choice([a, b, c])
+        #     score2 = random.choice([a, b, c])
+        #     score4 = random.choice([a, b, c])
+        #     score6 = random.choice([a, b, c])
+        #     match.score0 = score0
+        #     match.score2 = score2
+        #     match.score4 = score4
+        #     match.score6 = score6
 
         if match.score0 == 1.0:
             match.score1 = 0.0
@@ -2151,6 +2180,8 @@ class Controleur:
         # score_r1 contient les points qui se mettent à jour apres chaque match !!!
 
         joueursdict_tries = sorted(joueursdict, key=lambda x1: x1["pts total"], reverse=True)
+
+        print(f'joueursdict_tries{joueursdict_tries}')
 
         classement = []
         position = 1
