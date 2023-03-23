@@ -204,7 +204,7 @@ class Vue:
                                 "Souhaitez vous ajouter les scores manuellement ?\n"
                                "1: Oui\n"
                                "0: Non\n"))
-        #return rep_scores
+        return rep_scores
 
     @staticmethod
     def prompt_scores_liste_match():
