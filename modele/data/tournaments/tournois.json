@@ -120,17 +120,17 @@
   ],
   "1": [
     {
-      "couleurs_r1": "[['1,noir'], ['2,blanc'], ['0,noir'], ['7,blanc'], ['3,noir'], ['4,blanc'], ['5,noir'], ['6,blanc']]",
+      "couleurs_r1": "[['0,noir'], ['3,blanc'], ['4,noir'], ['7,blanc'], ['5,noir'], ['6,blanc'], ['1,noir'], ['2,blanc']]",
       "couleurs_r2": null,
       "couleurs_r3": null,
       "couleurs_r4": null,
       "date_debut": "nc",
       "date_fin": "nc",
-      "dateh_deb_r1": "22-03-2023, 20:18:24",
-      "dateh_deb_r2": "22-03-2023, 20:17:41",
+      "dateh_deb_r1": "23-03-2023, 11:57:42",
+      "dateh_deb_r2": "23-03-2023, 11:58:08",
       "dateh_deb_r3": null,
       "dateh_deb_r4": null,
-      "dateh_fin_r1": "22-03-2023, 20:17:41",
+      "dateh_fin_r1": "23-03-2023, 11:58:08",
       "dateh_fin_r2": null,
       "dateh_fin_r3": null,
       "dateh_fin_r4": null,
@@ -167,53 +167,89 @@
         7
       ],
       "lj_r2": [
-        "0",
-        "1",
-        "4",
-        "3",
+        "5",
         "2",
-        "6",
         "7",
-        "5"
+        "3",
+        "0",
+        "4",
+        "1",
+        "6"
       ],
       "lj_r3": null,
       "lj_r4": null,
-      "matchs_r1": "[(1, 2), (0, 7), (3, 4), (5, 6)]",
+      "matchs_r1": "[(0, 3), (4, 7), (5, 6), (1, 2)]",
       "matchs_r2": null,
       "matchs_r3": null,
       "matchs_r4": null,
       "nb_tours": 4,
       "nom_tournoi": "PyChess75",
       "num_tour_actuel": 2,
-      "score0": 0.0,
+      "score0": 0.5,
       "score1": 1.0,
-      "score2": 0.0,
+      "score2": 0.5,
       "score3": 1.0,
-      "score4": 1.0,
+      "score4": 0.5,
       "score5": 0.0,
-      "score6": 0.0,
+      "score6": 0.5,
       "score7": 1.0,
-      "score_j0": 2.5,
-      "score_j1": 3.5,
-      "score_j2": 2.0,
-      "score_j3": 4.0,
-      "score_j4": 5.5,
+      "score_j0": 3.0,
+      "score_j1": 7.5,
+      "score_j2": 2.5,
+      "score_j3": 8.0,
+      "score_j4": 9.0,
       "score_j5": 0.5,
-      "score_j6": 1.5,
-      "score_j7": 4.5,
-      "score_m1_r1": null,
+      "score_j6": 2.0,
+      "score_j7": 8.5,
+      "score_m1_r1": [
+        [
+          0,
+          0.5
+        ],
+        [
+          3,
+          1.0
+        ]
+      ],
       "score_m1_r2": null,
       "score_m1_r3": null,
       "score_m1_r4": null,
-      "score_m2_r1": null,
+      "score_m2_r1": [
+        [
+          4,
+          0.5
+        ],
+        [
+          7,
+          1.0
+        ]
+      ],
       "score_m2_r2": null,
       "score_m2_r3": null,
       "score_m2_r4": null,
-      "score_m3_r1": null,
+      "score_m3_r1": [
+        [
+          5,
+          0.5
+        ],
+        [
+          6,
+          0.0
+        ]
+      ],
       "score_m3_r2": null,
       "score_m3_r3": null,
       "score_m3_r4": null,
-      "score_m4_r1": null,
+      "score_m4_r1": [
+        [
+          1,
+          0.5
+        ],
+        [
+          2,
+          1.0
+        ]
+      ],
       "score_m4_r2": null,
       "score_m4_r3": null,
       "score_m4_r4": null

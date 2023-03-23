@@ -1049,7 +1049,7 @@ class Controleur:
             setattr(match, "joueur" + str(i), liste_joueurs[i])
 
         rep_scores = self.vue.prompt_quest_liste_match()
-        score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+
 
         # retourne 1: oui ou 2: non
         if rep_scores == 1:  # manuel
@@ -1060,20 +1060,48 @@ class Controleur:
             match.score6 = score6
 
         elif rep_scores == 0:  # Automatique
-            self.infos = "infos"
-            # a = 1.0
-            # b = 0.5
-            # c = 0.0
-            # x = [a, b, c]
-            # random.choice(x)
-            # score0 = random.choice([a, b, c])
-            # score2 = random.choice([a, b, c])
-            # score4 = random.choice([a, b, c])
-            # score6 = random.choice([a, b, c])
-            # match.score0 = score0
-            # match.score2 = score2
-            # match.score4 = score4
-            # match.score6 = score6
+            a = 1.0
+            b = 0.5
+            c = 0.0
+            x = [a, b, c]
+            random.choice(x)
+            score0 = random.choice([a, b, c])
+            score2 = random.choice([a, b, c])
+            score4 = random.choice([a, b, c])
+            score6 = random.choice([a, b, c])
+            match.score0 = score0
+            match.score2 = score2
+            match.score4 = score4
+            match.score6 = score6
+            if match.score0 == 1.0:
+                match.score1 = 0.0
+            elif match.score0 == 0.0:
+                match.score1 = 1.0
+            elif match.score0 == 0.5:
+                match.score1 = 0.5
+
+            if match.score2 == 1.0:
+                match.score3 = 0.0
+            elif match.score2 == 0.0:
+                match.score3 = 1.0
+            elif match.score2 == 0.5:
+                match.score3 = 0.5
+
+            if match.score4 == 1.0:
+                match.score5 = 0.0
+            elif match.score4 == 0.0:
+                match.score5 = 1.0
+            elif match.score4 == 0.5:
+                match.score5 = 0.5
+
+            if match.score6 == 1.0:
+                match.score7 = 0.0
+            elif match.score6 == 0.0:
+                match.score7 = 1.0
+            elif match.score6 == 0.5:
+                match.score7 = 0.5
+        else:
+            self.liste_matchs_auto_r1()
 
         # Score retourne "1: 1.0\n" "2: 0.5\n" "3: 0.0\n
         # else:
@@ -1091,33 +1119,8 @@ class Controleur:
         #     match.score4 = score4
         #     match.score6 = score6
 
-        if match.score0 == 1.0:
-            match.score1 = 0.0
-        elif match.score0 == 0.0:
-            match.score1 = 1.0
-        elif match.score0 == 0.5:
-            match.score1 = 0.5
 
-        if match.score2 == 1.0:
-            match.score3 = 0.0
-        elif match.score2 == 0.0:
-            match.score3 = 1.0
-        elif match.score2 == 0.5:
-            match.score3 = 0.5
 
-        if match.score4 == 1.0:
-            match.score5 = 0.0
-        elif match.score4 == 0.0:
-            match.score5 = 1.0
-        elif match.score4 == 0.5:
-            match.score5 = 0.5
-
-        if match.score6 == 1.0:
-            match.score7 = 0.0
-        elif match.score6 == 0.0:
-            match.score7 = 1.0
-        elif match.score6 == 0.5:
-            match.score7 = 0.5
 
         match_m1_r1 = Match(idtn, num_round, match.joueur0, match.joueur1)
         print()
