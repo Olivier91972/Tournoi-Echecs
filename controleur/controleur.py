@@ -2,7 +2,6 @@
 c’est la couche qui apporte une interaction avec l’utilisateur"""
 import json
 import numpy as np
-import os
 import random
 import sys
 from tabulate import tabulate
@@ -11,18 +10,13 @@ import timg
 
 
 from modele.joueurs import Joueur, joueur
-from modele.tournois import Tournoi, tournoi
+from modele.tournois import tournoi
 from modele.matchs import Match, match
-from tours import Tours, tour1, tour2, tour3, tour4
+from tours import tour1, tour2, tour3, tour4
 from vue.vue import Vue
 
 
 # méthodes statiques
-
-
-# def controles():
-#     """Entrées de l'application"""  # Liste de choix à créer puis router en passant avant la class controleur!!!
-#     # reponse = self.get_menu()  # Problème !
 
 class Controleur:
     """Classe qui contrôle l'application"""
@@ -32,9 +26,6 @@ class Controleur:
         self.fichier = "fichier"
         self.tournoi_actuel = "tournoi_actuel"
         self.joueur = Joueur(nom="nc", prenom="nc", idx="nc", daten="nc")
-        #
-        # self.match = Match(idtn=1, num_round=1, joueur0=int, joueur1=int)
-        # self.tour = Tours(num_round=int)
 
     def run(self):
         """Démarre l'application"""
@@ -119,12 +110,6 @@ class Controleur:
         with open("../modele/data/tournaments/tournois.json", "r") as f:
             datatournois = json.load(f)
 
-            # print(datatournois)
-
-            # Pour décoder en utf-8 sinon "CrÃ©teil" au lieu de "Créteil"
-            # sjson = (datatournois["0"][0]["lieu"]).encode("latin1").decode("utf-8")
-            # print(sjson)
-
         liste_t = []
         liste_inp = []
         for i in datatournois:
@@ -135,8 +120,7 @@ class Controleur:
                 tournoi.nom_tournoi = tournoi.nom_tournoi.encode("latin1").decode("utf-8")
             except AttributeError:
                 pass
-                # print("\nLe champ description est vide !\n"
-                #       "'NoneType' object has no attribute 'encode'\n")
+
             tournoi.date_debut = datatournois[f'{i}'][0]["date_debut"]
             tournoi.date_fin = datatournois[f'{i}'][0]["date_fin"]
             tournoi.nb_tours = datatournois[f'{i}'][0]["nb_tours"]
@@ -177,7 +161,7 @@ class Controleur:
 
         if "liste_t" in liste_stats:
             print("\nliste des tournois:\n")
-            liste_t = self.vue.afficher_infos_tournois(liste_t)
+            self.vue.afficher_infos_tournois(liste_t)
         else:
             pass
 
@@ -212,14 +196,9 @@ class Controleur:
         """Ajoute le dict qui contient les infos du tournoi à créer"""
 
         with open("../modele/data/tournaments/tournois.json", "r") as f:
-            datatournois = json.load(f)  # Vu pour changer le rep avec Guillaume -> "../" !!!!!!
+            datatournois = json.load(f)
 
-        # print(datatournois)
-
-        # Création nouvel objet tournoi:  # ok _x Manque incrément nb_joueurs +1 dans la classe joueur(init) !!!
         idx = len(datatournois)
-
-        # print(tournoi.nom_tournoi, tournoi.lieu, tournoi.date_debut, tournoi.idn, tournoi.nb_tours)
 
         tournoi.nom_tournoi = tournoi_dict["nom_tournoi"]
         try:
@@ -353,11 +332,6 @@ class Controleur:
         with open("../modele/data/tournaments/tournois.json", "r") as f:
             datatournois = json.load(f)
 
-        # Charge les données dans l'objet tournoi (en cours...)
-        # Sinon
-        # raise TypeError(f'Object of type {o.__class__.__name__} '
-        # TypeError: Object of type type is not JSON serializable
-
         # liste_stats="liste_t" par defaut, sinon liste_stats="stat3" pour rapport n°3
         self.infos_tournois(liste_stats="liste_t")
         # Demander l'id du tournoi
@@ -429,7 +403,6 @@ class Controleur:
         tournoi.couleurs_r3 = datatournois[f'{id_tournoi}'][0]["couleurs_r3"]
         tournoi.couleurs_r4 = datatournois[f'{id_tournoi}'][0]["couleurs_r4"]
         tournoi.num_tour_actuel = datatournois[f'{id_tournoi}'][0]["num_tour_actuel"]
-        #tournoi.idtn = datatournois[f'{id_tournoi}'][0]["idtn"]
         tour1.dateh_deb = datatournois[f'{id_tournoi}'][0]["dateh_deb_r1"]
         tour1.dateh_fin = datatournois[f'{id_tournoi}'][0]["dateh_fin_r1"]
         tour2.dateh_deb = datatournois[f'{id_tournoi}'][0]["dateh_deb_r2"]
@@ -504,11 +477,6 @@ class Controleur:
         with open("../modele/data/tournaments/joueurs.json", "r") as f:
             datajoueurs = json.load(f)  # Vu pour changer le rep avec Guillaume -> "../" !!!!!!
 
-            # print(datajoueurs)
-
-            #Demander l'id du tournoi ???
-            # tournoi.idtn = 1  # Par défaut
-
             liste_j = []
             for i in datajoueurs:
                 joueur.idx = i
@@ -532,12 +500,8 @@ class Controleur:
         rep = "o"
         while rep == "o":
 
-            input_idx = str
-            input_idx = self.vue.prompt_joueurs_tour1() #vérifier que le bon nombre de car est retourné !!!!!!
-
-            joueurs_idx = []
-
-
+            # input_idx = str
+            input_idx = self.vue.prompt_joueurs_tour1()
 
             yonj = int(input("Veuillez confirmer (1: Oui) ou recommencer (0: Non) ?\n"
                              "1: Oui\n"
@@ -549,9 +513,6 @@ class Controleur:
                 print(f'Voici les {len(liste_nombres)} joueur(s) sélectionnés pour le Round1 :\n')
             else:
                 print("Démarrage du Round1...\n"), self.melanger_joueurs_tour1()
-
-
-            #liste_nombres = [int(x) for x in input_idx.split(",")]
 
             # Assign array
             arr = np.array(liste_nombres)
@@ -567,24 +528,15 @@ class Controleur:
             with open("../modele/data/tournaments/joueurs.json", "r") as f:
                 datajoueurs = json.load(f)  # Vu pour changer le rep avec Guillaume -> "../" !!!!!!
 
-            # print(datajoueurs)
-
                 # Afficher liste des joueurs les joueurs sélectionnés
                 liste_t = []  # !!!attention de ne pas oublier de déclarer en dehors !!!!!!!!!!!!!!!!!!!!!!!!!
                 for liste_j in arr:
 
-                    # print(datajoueurs[f'{liste_j}'][0]["nom"])
-                    # print(datajoueurs[f'{liste_j}'][0]["prenom"])
-                    # print("------------------------")
                     idj = liste_j
                     no = (datajoueurs[f'{liste_j}'][0]["nom"])
                     pr = (datajoueurs[f'{liste_j}'][0]["prenom"])
                     liste_t.append([str(idj)]+[str(no)]+[str(pr)])
 
-                    # print(liste_t)  # je n'arrive pas à extend dans textable (dico?)
-
-                # je n'arrive pas à obtenir cette exemple de liste dans liste_t2!!!!!!!!!!!!!résolu
-                # table = ['Smollett', 'Jamal'], ['Henson', 'Cookie'], ['Byers', 'Andre']
                 table = liste_t
                 headers = ["Id", "Nom", "Prenom"]
                 print(tabulate(table, headers, tablefmt="grid"))
@@ -598,45 +550,30 @@ class Controleur:
                     idt_tournoi = 1  # le dernier de la liste est l'actuel
 
                     tournoi.idtn = 1  # Tournoi 1 par défaut !!!!!
-                    #print(f'liste_ nombres {liste_nombres}')
+                    # print(f'liste_ nombres {liste_nombres}')
                     tournoi.lj_r1 = liste_nombres
                     tournoi.liste_joueurs = liste_nombres
 
-                    #print(datatournois)
-
-                    #print(tuple(arr))
-
-                    liste_ljr1 = arr  # Ok [arr] -le tuple ou liste ne passe pas en variable!!!!!!!!!
-                    #tournoi.lj_r1 = liste_ljr1
+                    liste_ljr1 = arr
                     tournoi.idtn = datatournois[f'{idt_tournoi}'][0]["idtn"]
                     tournoi.num_tour_actuel = 1  # car ici tour1
-                    #print("idtn", tournoi.idtn)
-                    #print(tournoi.nom_tournoi)
 
                     liste_num = []
                     for num in arr:
                         #print(num)
                         liste_num.append(num)
                     liste_num_f = str(liste_num).replace("[]", "()")
-                    #print(f'liste_num_f: {liste_num_f}')
                     print(f'Enregistrement sur le Round{tournoi.num_tour_actuel}')
-                    #datatournois[f'{tournoi.num_tour_actuel}'][0]["lj_r1"] = str(liste_num_f)  #En str car en int ça passe pas!!!
-                    #print("arr", arr)
 
                     id_joueurs = arr  # base d'id !!!!!
                     # diviser la liste de joueurs en 2
                     paires_joueurs = [(id_joueurs[i], id_joueurs[i+1]) for i in range(0, len(id_joueurs), 2)]
 
-                    #print(paires_joueurs)
-
                     xr = tournoi.num_tour_actuel
                     liste_p = self.vue.afficher_paires_joueurs(xr, paires_joueurs)
-
                     tournoi.matchs_r1 = str(liste_p)
 
-                    #print(tournoi.lj_r1)
                     tournoi.idtn = 1
-
 
                     liste_xj = self.vue.afficher_paires_couleurs(xr, arr)
                     # Afficher les paires de couleurs des joueurs
@@ -656,7 +593,6 @@ class Controleur:
         with open("../modele/data/tournaments/tournois.json", "r") as f2:
             datatournois = json.load(f2)  # Vu pour changer le rep avec Guillaume -> "../" !!!!!!
             # Charge les données dans l'objet tournoi (en cours...)
-            #idt_tournoi = len(datatournois) - 1  # le dernier de la liste est l'actuel
 
             self.serialiser_obj_tournois()
 
@@ -715,9 +651,7 @@ class Controleur:
                 while rep == "o":
 
                     joueurs_idx = []
-                    #print("### Tip's pour import des 8 premiers joueurs: 0,1,2,3,4,5,6,7 ###")
                     print("\n----------[Round]----------")
-                    #input_idrnd = 2
 
                     input_idrnd = self.vue.prompt_joueurs_autres_tours()
 
@@ -729,7 +663,6 @@ class Controleur:
                     update_tournoi(datatournois)
                     with open("../modele/data/tournaments/tournois.json", "r") as f2:
                         datatournois = json.load(f2)
-                        #tournoi.num_tour_actuel = input_idrnd  # numéro du Round pour la sélection
 
                         self.serialiser_obj_tournois()
                         # récupérer la liste Joueurs/scores du round précédent pour total points/classement !!!!!!!!!
@@ -737,8 +670,6 @@ class Controleur:
                         yonj = int(input("Veuillez confirmer (1: oui) ou recommencer (o) ?\n"
                                          "1: Oui\n"
                                          "0: Non\n"))
-
-                        #liste_nombres = None  # récupérer la liste
 
                         # fonction qui donne les déja joués pour 1 joueur:
                         # pour le 1er joueur print du vs
@@ -793,14 +724,7 @@ class Controleur:
                         update_tournoi(datatournois)
                         self.serialiser_obj_tournois()
                         print(f'tournoi.lj_r2 {tournoi.lj_r2}')
-                        # if num_round == 2:
-                        #     tournoi.lj_r2
-                        # elif num_round == 3:
-                        #     tournoi.lj_r3
-                        # elif num_round == 4:
-                        #     tournoi.lj_r4
-                        # else:
-                        #     pass
+
                         if num_round == 2:
                             lj_r2_t2 = tournoi.lj_r2
                             nextdj0 = self.joueurs_dejajoue(liste_p[0][0], liste_dj0, tournoi.lj_r2)
@@ -852,20 +776,13 @@ class Controleur:
                         else:
                             pass
 
-                        #print(lj_rx_t2)
-
-
                         print(f'tournoi.lj_r2 {tournoi.lj_r2}')
-                        self.serialiser_obj_tournois()  # <--- Pourquoi demander à guillaume !!!!!!!!!???????????
+                        self.serialiser_obj_tournois()
                         # sinon tournoi.lj_r2 = []
 
                         print(f'tournoi.lj_r2{tournoi.lj_r2}')
-                        """
-                        liste_p_def = [tournoi.lj_r2[0],]
-                        if tournoi.lj_r2[1] == tournoi.lj_r2[0]:
-                            liste_p_def.append()
-                        """
-                        #Mon algo de pairing perso !!! 1/2 jour de travail !!!
+
+                        #Mon algo de pairing :
                         if num_round == 2:
                             liste_p_r2 = [tournoi.lj_r2[0], nextdj0, tournoi.lj_r2[1], nextdj2,
                                           tournoi.lj_r2[3], nextdj4, tournoi.lj_r2[5], nextdj6]
@@ -892,8 +809,6 @@ class Controleur:
                             pass
 
                         print(f'Enregistrement sur le Round{tournoi.num_tour_actuel}')
-                        #tournoi.lj_r1 = str(liste_num_f)  # En str car en int ça passe pas!!!
-                        # print("arr", arr)
 
                         if num_round == 2:
                             liste_p_rxx = liste_p_r2
@@ -909,8 +824,6 @@ class Controleur:
                         # diviser la liste de joueurs en 2
                         paires_joueurs = [(id_joueurs[i], id_joueurs[i + 1]) for i in range(0, len(id_joueurs), 2)]
 
-                        # print(paires_joueurs)
-
                         # Afficher les paires de joueurs
                         print(f"---------PAIRES DE JOUEURS DU ROUND{tournoi.num_tour_actuel}---------")
                         liste_p = []
@@ -919,7 +832,6 @@ class Controleur:
                             liste_p.append(paire)
                         print(liste_p)
 
-                        # Envoyer liste_p avec des joueurs non joués !!!!!
                         if num_round == 2:
                             tournoi.matchs_r2 = liste_p_r2
                         elif num_round == 3:
@@ -928,19 +840,6 @@ class Controleur:
                             tournoi.matchs_r4 = liste_p_r4
                         else:
                             pass
-
-                        #print(tournoi.lj_r2)
-
-
-                        #tournoi.num_tour_actuel += 1  # pour passer au auto au round suivant
-                        #update_tournoi(datatournois)  # sinon crash lj_r2 = [] !!!!!!!!!!!!!!!
-
-                        """
-                        paire1 = liste_p[0]
-                        paire2 = liste_p[1]
-                        paire3 = liste_p[2]
-                        paire4 = liste_p[3]
-                        """
 
                         # Afficher les paires de couleurs des joueurs
                         print(f"---PAIRES DE COULEURS DES JOUEURS DU ROUND{tournoi.num_tour_actuel}---")
@@ -970,43 +869,38 @@ class Controleur:
                         else:
                             pass
 
-                        # Pas de tour 5...
                         if tournoi.num_tour_actuel == 4:
                             tournoi.num_tour_actuel = 1
                         else:
                             tournoi.num_tour_actuel += 1  # pour passer au auto au round suivant !
-                        # gérer les try et éviter les modif si erreurs avant le dump
+
 
                         update_tournoi(datatournois)
 
                         with open("../modele/data/tournaments/tournois.json", "w") as f3:
                             json.dump(datatournois, f3, indent=2, sort_keys=True)
 
-                            # print(datatournois)
-
                         self.serialiser_obj_tournois()
 
                         print("Sauvegarde effectuée")
 
                         if input_idrnd == 2:
-                            tour1.dateh_fin = tour1.fin()  # Termine en auto le précédent Round, reste màj !!!!!!!!!
+                            tour1.dateh_fin = tour1.fin()
                             tour2.dateh_deb = tour2.debut()
                             update_tournoi(datatournois)
                             self.liste_matchs_auto_r2()
 
                         elif input_idrnd == 3:
-                            tour3.dateh_fin = tour2.fin()  # Termine en auto le précédent Round, reste màj !!!!!!!!!
+                            tour3.dateh_fin = tour2.fin()
                             tour3.dateh_deb = tour3.debut()
                             update_tournoi(datatournois)
                             self.liste_matchs_auto_r3()
 
                         elif input_idrnd == 4:
-                            tour4.dateh_fin = tour3.fin()  # Termine en auto le précédent Round, reste màj !!!!!!!!!
+                            tour4.dateh_fin = tour3.fin()
                             tour4.dateh_deb = tour4.debut()
                             update_tournoi(datatournois)
                             self.liste_matchs_auto_r4()
-
-                        # Attention ne pas oublier de terminer le Round 4 si le dernier match est terminé !!!!!!!!!
 
                         else:
                             update_tournoi(datatournois)
@@ -1018,7 +912,6 @@ class Controleur:
         with open("../modele/data/tournaments/tournois.json", "r") as f:
             datatournois = json.load(f)
 
-        # print(datatournois)
         # créer Match Round1
         idtn = tournoi.idtn  # input("Entrez l'idtn du tournoi:\n")  # afficher liste des tournois !!!!!!!
         print("\n----------[Matchs]----------\n")
@@ -1053,21 +946,16 @@ class Controleur:
         match.score6 = 0.0
         match.score7 = 0.0
 
-
-        #print(tournoi.matchs_r1)
-
-        #print(tournoi.lj_r1)
-
         liste_joueurs = [int(tournoi.matchs_r1[2]), int(tournoi.matchs_r1[5]), int(tournoi.matchs_r1[10]),
                          int(tournoi.matchs_r1[13]), int(tournoi.matchs_r1[18]), int(tournoi.matchs_r1[21]),
                          int(tournoi.matchs_r1[26]), int(tournoi.matchs_r1[29])]
-        #print(sorted(liste_joueurs, reverse=False)) si oui !!! problème de joueurs déjajoué !!!
+        # print(sorted(liste_joueurs, reverse=False)) si oui !!! problème de joueurs déjajoué !!!
         for i in liste_joueurs:
             setattr(match, "joueur" + str(i), liste_joueurs[i])
 
         rep_scores = self.vue.prompt_quest_liste_match()
 
-        # retourne 1: oui ou 2: non
+        # retourne 1: oui ou 0: non
         if rep_scores == 1:  # manuel
             score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
             match.score0 = score0
@@ -1152,13 +1040,6 @@ class Controleur:
         match.paire = tuple[(), ()]
         match.paire1 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
         print(match.paire1)
-
-        # permet de mettre des valeurs dans des attributs :
-
-        # print(sorted(liste_joueurs, reverse=False))
-        # for i in liste_joueurs:
-        #     setattr(match, "joueur" + str(i), liste_joueurs[i])
-        #
 
         print()
         if match.score0 > match.score1:
@@ -1570,7 +1451,6 @@ class Controleur:
         match.paire1 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
         print(match.paire1)
 
-
         print()
         if match.score0 > match.score1:
             print(f'----------Le joueur {match.joueur0} a gagné le match du Round{num_round} !----------')
@@ -1634,8 +1514,6 @@ class Controleur:
         tournoi.score_m3_r2 = match.paire3
         tournoi.score_m4_r2 = match.paire4
 
-
-
         time.sleep(0.8)
 
         update_tournoi(datatournois)
@@ -1643,10 +1521,6 @@ class Controleur:
         with open("../modele/data/tournaments/joueurs.json", "r") as f:
             datajoueurs = json.load(f)
 
-            # Charge les données dans l'objet tournoi (en cours...)
-            # Sinon
-            # raise TypeError(f'Object of type {o.__class__.__name__} '
-            # TypeError: Object of type type is not JSON serializable
             tournoi.idtn = 1
 
             self.serialiser_obj_tournois()
@@ -1659,15 +1533,6 @@ class Controleur:
         for i in liste_joueurs_int:
             setattr(match, "joueur" + str(i), liste_joueurs_int[i])
 
-        # !!! cas non géré: !!!
-        # if match.joueur0 == 3:
-        #     tournoi.score_j3 += match.score0
-        # elif match.joueur2 == 0:
-        #     tournoi.score_j0 += match.score2
-        # elif match.joueur3 == 6:
-        #     tournoi.score_j6 += match.score3
-
-        # cas_scores()
         self.serialiser_obj_tournois()
 
         if match.joueur0 == 0:
@@ -1806,14 +1671,6 @@ class Controleur:
         elif match.joueur7 == 7:
             tournoi.score_j7 += match.score7
 
-        # tournoi.score_j0 += match.score0
-        # tournoi.score_j1 += match.score1
-        # tournoi.score_j2 += match.score2
-        # tournoi.score_j3 += match.score3
-        # tournoi.score_j4 += match.score4
-        # tournoi.score_j5 += match.score5
-        # tournoi.score_j6 += match.score6
-        # tournoi.score_j7 += match.score7
 
         joueursdict2 = [
             {"nom": datajoueurs[f'{match.joueur0}'][0]["nom"] + " " + datajoueurs[f'{match.joueur0}'][0]["prenom"],
@@ -1867,7 +1724,6 @@ class Controleur:
         print(f'num_round: {num_round}')
         update_tournoi(datatournois)
 
-        # print(f'classement{classement}')
 
         self.creer_tour3()
 
@@ -1923,9 +1779,6 @@ class Controleur:
         liste_joueurs_int = [int(tournoi.matchs_r3[0]), int(tournoi.matchs_r3[1]), int(tournoi.matchs_r3[2]),
                              int(tournoi.matchs_r3[3]), int(tournoi.matchs_r3[4]), int(tournoi.matchs_r3[5]),
                              int(tournoi.matchs_r3[6]), int(tournoi.matchs_r3[7])]
-
-        # print(sorted(liste_joueurs_int, reverse=False)) attention si oui prbl dejajoué
-        # print(f"liste_joueurs_int: {liste_joueurs_int}")
 
         for i in liste_joueurs_int:
             setattr(match, "joueur" + str(i), liste_joueurs_int[i])
@@ -2088,10 +1941,6 @@ class Controleur:
         with open("../modele/data/tournaments/joueurs.json", "r") as f:
             datajoueurs = json.load(f)
 
-            # Charge les données dans l'objet tournoi (en cours...)
-            # Sinon
-            # raise TypeError(f'Object of type {o.__class__.__name__} '
-            # TypeError: Object of type type is not JSON serializable
             tournoi.idtn = 1
 
             self.serialiser_obj_tournois()
@@ -2344,9 +2193,6 @@ class Controleur:
                              int(tournoi.matchs_r4[3]), int(tournoi.matchs_r4[4]), int(tournoi.matchs_r4[5]),
                              int(tournoi.matchs_r4[6]), int(tournoi.matchs_r4[7])]
 
-        # print(sorted(liste_joueurs_int, reverse=False)) attention si oui probl dejajoue
-        # print(f"liste_joueurs_int: {liste_joueurs_int}")
-
         for i in liste_joueurs_int:
             setattr(match, "joueur" + str(i), liste_joueurs_int[i])
 
@@ -2508,10 +2354,6 @@ class Controleur:
         with open("../modele/data/tournaments/joueurs.json", "r") as f:
             datajoueurs = json.load(f)
 
-            # Charge les données dans l'objet tournoi (en cours...)
-            # Sinon
-            # raise TypeError(f'Object of type {o.__class__.__name__} '
-            # TypeError: Object of type type is not JSON serializable
             tournoi.idtn = 1
 
             self.serialiser_obj_tournois()
@@ -2680,14 +2522,6 @@ class Controleur:
             {"nom": datajoueurs[f'{match.joueur7}'][0]["nom"] + " " + datajoueurs[f'{match.joueur7}'][0]["prenom"],
              "idj": match.joueur7, "points": match.score7, "pts total": tournoi.score_j7}
             ]
-        # score_r4 contient les points qui se mettent à jour apres chaque match !!!
-
-        # if match.joueur0 == 0:
-        #     score_joueur0 = match.score0
-        # else:
-        #     f'score_joueur{match.joueur0}' = f'match.score{match.joueur0}'
-
-
 
         joueursdict_tries4 = sorted(joueursdict4, key=lambda x1: x1["pts total"], reverse=True)
 
@@ -2701,20 +2535,10 @@ class Controleur:
 
         time.sleep(0.8)
 
-        # print("liste en fonction des points")
-        # liste_lj_r4 = []
-        # for x4 in classement:
-        #     ljr4 = x4[2]
-        #     liste_lj_r4.append(str(ljr4))
-        # # print(liste_lj_r4)
-        # tournoi.lj_r4 = liste_lj_r4
-
         # Pour enregistrement au bon endroit !!! sinon dernier par défaut tournoi.idtn
         print(f'tournoi.idtn: {tournoi.idtn}')
         print(f'num_round: {num_round}')
         update_tournoi(datatournois)
-
-        # print(f'classement{classement}')
 
         for x1 in joueursdict_tries4:
             classement4.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
@@ -2730,10 +2554,8 @@ class Controleur:
         with open("../modele/data/tournaments/joueurs.json", "r") as f:
             datajoueurs = json.load(f)  # Vu pour changer le rep avec Guillaume -> "../" !!!!!!
 
-        #print(datajoueurs)
-
         liste_j_bdd = len(datajoueurs)
-        #print(liste_j_bdd)
+
         if liste_j_bdd > 9:
             print("Il n'est pas possible d'ajouter plus de joueurs")
             self.set_menu_options()
@@ -2751,14 +2573,6 @@ class Controleur:
                 print("Ajout d'un autre joueur...\n")
             else:
                 self.vue.afficher_infos_joueurs(listej=self.infos_joueurs(stat="infos_joueurs"))
-
-            # Changer répertoire de travail !!!
-            # print(os.getcwd())
-            # os.chdir("\\Users\olivier\PycharmProjects\projects\Tournoi-Echecs\modele")  # Corriger chemin Guillaume!!!
-            # print(os.getcwd())
-            # open("modele/data/tournaments/joueurs.json", "w+")
-            # sérialiser
-
 
             # Création nouveau profil joueur:  # Manque incrément nb_joueurs +1 dans la classe joueur(init) !!!
             idx = len(datajoueurs)
@@ -2807,18 +2621,12 @@ class Controleur:
                     joueur.prenom = joueur.prenom.encode("latin1").decode("utf-8")
                 except AttributeError:
                     pass
-                    # print("\nLe champ description est vide !\n"
-                    #       "'NoneType' object has no attribute 'encode'\n")
-                # print(joueur.idx, joueur.nom, joueur.prenom)
 
                 idj = joueur.idx
                 nj = joueur.nom
                 pj = joueur.prenom
 
                 listej.append([str(idj)] + [str(nj)] + [str(pj)])
-
-            # print(listej)
-            # print(joueur.nom, joueur.prenom)
 
             if "stat4" not in stat:
                 listej = self.vue.afficher_infos_joueurs(listej)
@@ -2839,18 +2647,12 @@ class Controleur:
             time.sleep(2)
             return listej, self.set_menu_options()
 
-        # else:
-        # print("prlm lecture joueurs.json")
-        # print(os.getcwd())
-
     @staticmethod
     def joueurs_dejajoue(joueurx, joueursxdejajoue, listejoueurs):  # (joueurx, joueursdejajoue, listejoueurs)
         """Permet d'éviter que deux joueurs jouent à nouveau l'un contre l'autre
         et retourne le joueur suivant"""
         with open("../modele/data/tournaments/joueurs.json", "r") as f:
             datajoueurs = json.load(f)  # Vu pour changer le rep avec Guillaume -> "../" !!!!!!
-
-        # print(datajoueurs)
 
         for i in joueurx:
             listejoueurs.remove(i)
@@ -2876,7 +2678,6 @@ class Controleur:
             id_tournoi = self.vue.prompt_id_tournoi()
             tournoi.idtn = id_tournoi
             self.serialiser_obj_tournois()
-            #print(f'tournoi.idtn: {tournoi.idtn}')
 
             joueur0 = Joueur(nom=datajoueurs["0"][0]["nom"], prenom=datajoueurs["0"][0]["prenom"], idx="0", daten=None)
             joueur1 = Joueur(nom=datajoueurs["1"][0]["nom"], prenom=datajoueurs["1"][0]["prenom"], idx="1", daten=None)
@@ -2904,9 +2705,7 @@ class Controleur:
              "pts total": tournoi.score_j6},
             {"nom": joueur7.nom + " " + joueur7.prenom, "idj": joueur7.idx, "points": match.score7,
              "pts total": tournoi.score_j7}
-
         ]
-        # score_r1 contient les points qui se mettent à jour apres chaque match !!!
 
         joueursdict_tries = sorted(joueursdict, key=lambda x1: x1["pts total"], reverse=True)
 
@@ -2927,10 +2726,7 @@ class Controleur:
         with open("../modele/data/tournaments/joueurs.json", "r") as f:
             datajoueurs = json.load(f)
 
-            # id_tournoi = self.vue.prompt_id_tournoi()
-            # tournoi.idtn = id_tournoi
             self.serialiser_obj_tournois()
-            # print(f'tournoi.idtn: {tournoi.idtn}')
 
             joueur0 = Joueur(nom=datajoueurs["0"][0]["nom"], prenom=datajoueurs["0"][0]["prenom"], idx="0", daten=None)
             joueur1 = Joueur(nom=datajoueurs["1"][0]["nom"], prenom=datajoueurs["1"][0]["prenom"], idx="1", daten=None)
@@ -2958,9 +2754,7 @@ class Controleur:
              "pts total": tournoi.score_j6},
             {"nom": joueur7.nom + " " + joueur7.prenom, "idj": match.joueur7, "id": joueur7.idx, "points": match.score7,
              "pts total": tournoi.score_j7}
-
         ]
-        # score_r1 contient les points qui se mettent à jour apres chaque match !!!
 
         joueursdict_alpha = sorted(joueursdict, key=lambda x1: x1["nom"], reverse=False)
 
@@ -3334,292 +3128,6 @@ def update_tournoi(datatournois):
 
     print("Sauvegarde effectuée")
 
-
-def cas_scores():
-    """Permet de gérer l'affectation des scores"""
-
-    if match.joueur0 == 0:  # cas avec autre j dans score 0
-        tournoi.score_j0 += match.score0
-    elif match.joueur0 == 1:
-        tournoi.score_j1 += match.score0
-    elif match.joueur0 == 2:
-        tournoi.score_j2 += match.score0
-    elif match.joueur0 == 3:
-        tournoi.score_j3 += match.score0
-    elif match.joueur0 == 4:
-        tournoi.score_j4 += match.score0
-    elif match.joueur0 == 5:
-        tournoi.score_j5 += match.score0
-    elif match.joueur0 == 6:
-        tournoi.score_j6 += match.score0
-    elif match.joueur0 == 7:
-        tournoi.score_j7 += match.score0
-
-    if match.joueur1 == 0:  # cas avec autre j dans score 1 ...
-        tournoi.score_j0 += match.score1
-    elif match.joueur1 == 1:
-        tournoi.score_j1 += match.score1
-    elif match.joueur1 == 2:
-        tournoi.score_j2 += match.score1
-    elif match.joueur1 == 3:
-        tournoi.score_j3 += match.score1
-    elif match.joueur1 == 4:
-        tournoi.score_j4 += match.score1
-    elif match.joueur1 == 5:
-        tournoi.score_j5 += match.score1
-    elif match.joueur1 == 6:
-        tournoi.score_j6 += match.score1
-    elif match.joueur1 == 7:
-        tournoi.score_j7 += match.score1
-
-    if match.joueur2 == 0:  # cas avec autre j dans score 2 ...
-        tournoi.score_j0 += match.score2
-    elif match.joueur2 == 1:
-        tournoi.score_j1 += match.score2
-    elif match.joueur2 == 2:
-        tournoi.score_j2 += match.score2
-    elif match.joueur2 == 3:
-        tournoi.score_j3 += match.score2
-    elif match.joueur2 == 4:
-        tournoi.score_j4 += match.score2
-    elif match.joueur2 == 5:
-        tournoi.score_j5 += match.score2
-    elif match.joueur2 == 6:
-        tournoi.score_j6 += match.score2
-    elif match.joueur2 == 7:
-        tournoi.score_j7 += match.score2
-
-    if match.joueur3 == 0:  # cas avec autre j dans score 3 ...
-        tournoi.score_j0 += match.score3
-    elif match.joueur3 == 1:
-        tournoi.score_j1 += match.score3
-    elif match.joueur3 == 2:
-        tournoi.score_j2 += match.score3
-    elif match.joueur3 == 3:
-        tournoi.score_j3 += match.score3
-    elif match.joueur3 == 4:
-        tournoi.score_j4 += match.score3
-    elif match.joueur3 == 5:
-        tournoi.score_j5 += match.score3
-    elif match.joueur3 == 6:
-        tournoi.score_j6 += match.score3
-    elif match.joueur3 == 7:
-        tournoi.score_j7 += match.score3
-
-    if match.joueur4 == 0:  # cas avec autre j dans score 4 ...
-        tournoi.score_j0 += match.score4
-    elif match.joueur4 == 1:
-        tournoi.score_j1 += match.score4
-    elif match.joueur4 == 2:
-        tournoi.score_j2 += match.score4
-    elif match.joueur4 == 3:
-        tournoi.score_j3 += match.score4
-    elif match.joueur4 == 4:
-        tournoi.score_j4 += match.score4
-    elif match.joueur4 == 5:
-        tournoi.score_j5 += match.score4
-    elif match.joueur4 == 6:
-        tournoi.score_j6 += match.score4
-    elif match.joueur4 == 7:
-        tournoi.score_j7 += match.score4
-
-    if match.joueur5 == 0:  # cas avec autre j dans score 5 ...
-        tournoi.score_j0 += match.score5
-    elif match.joueur5 == 1:
-        tournoi.score_j1 += match.score5
-    elif match.joueur5 == 2:
-        tournoi.score_j2 += match.score5
-    elif match.joueur5 == 3:
-        tournoi.score_j3 += match.score5
-    elif match.joueur5 == 4:
-        tournoi.score_j4 += match.score5
-    elif match.joueur5 == 5:
-        tournoi.score_j5 += match.score5
-    elif match.joueur5 == 6:
-        tournoi.score_j6 += match.score5
-    elif match.joueur5 == 7:
-        tournoi.score_j7 += match.score5
-
-    if match.joueur6 == 0:  # cas avec autre j dans score 6 ...
-        tournoi.score_j0 += match.score6
-    elif match.joueur6 == 1:
-        tournoi.score_j1 += match.score6
-    elif match.joueur6 == 2:
-        tournoi.score_j2 += match.score6
-    elif match.joueur6 == 3:
-        tournoi.score_j3 += match.score6
-    elif match.joueur6 == 4:
-        tournoi.score_j4 += match.score6
-    elif match.joueur6 == 5:
-        tournoi.score_j5 += match.score6
-    elif match.joueur6 == 6:
-        tournoi.score_j6 += match.score6
-    elif match.joueur6 == 7:
-        tournoi.score_j7 += match.score6
-
-    if match.joueur7 == 0:  # cas avec autre j dans score 7 ...
-        tournoi.score_j0 += match.score7
-    elif match.joueur7 == 1:
-        tournoi.score_j1 += match.score7
-    elif match.joueur7 == 2:
-        tournoi.score_j2 += match.score7
-    elif match.joueur7 == 3:
-        tournoi.score_j3 += match.score7
-    elif match.joueur7 == 4:
-        tournoi.score_j4 += match.score7
-    elif match.joueur7 == 5:
-        tournoi.score_j5 += match.score7
-    elif match.joueur7 == 6:
-        tournoi.score_j6 += match.score7
-    elif match.joueur7 == 7:
-        tournoi.score_j7 += match.score7
-
-    # for xmatch in range(8):
-    #     print(match.joueur1)
-    #     if match.joueur0 == 0:
-    #         tournoi.score_j0 += 50.0
-    #         break
-    #     elif match.joueur0 == 1:
-    #         tournoi.score_j1 += 50.0
-    #         break
-    # print(f'tournoi.score_j1: {tournoi.score_j1}')
-    # print(f'tournoi.score_j7: {tournoi.score_j7}')
-
-    # ------------------- #
-
-    if match.joueur0 == 1:  # cas avec j dans score1
-        tournoi.score_j1 += match.score1
-    elif match.joueur0 == 2:
-        tournoi.score_j2 += match.score2
-    elif match.joueur0 == 3:
-        tournoi.score_j3 += match.score3
-    elif match.joueur0 == 4:
-        tournoi.score_j4 += match.score4
-    elif match.joueur0 == 5:
-        tournoi.score_j5 += match.score5
-    elif match.joueur0 == 6:
-        tournoi.score_j6 += match.score6
-    elif match.joueur0 == 7:
-        tournoi.score_j7 += match.score7
-
-    if match.joueur1 == 0:
-        tournoi.score_j0 += match.score0
-    elif match.joueur1 == 1:
-        tournoi.score_j1 += match.score1
-    elif match.joueur1 == 2:
-        tournoi.score_j2 += match.score2
-    elif match.joueur1 == 3:
-        tournoi.score_j3 += match.score3
-    elif match.joueur1 == 4:
-        tournoi.score_j4 += match.score4
-    elif match.joueur1 == 5:
-        tournoi.score_j5 += match.score5
-    elif match.joueur1 == 6:
-        tournoi.score_j6 += match.score6
-    elif match.joueur1 == 7:
-        tournoi.score_j7 += match.score7
-
-    if match.joueur2 == 0:
-        tournoi.score_j0 += match.score0
-    elif match.joueur2 == 1:
-        tournoi.score_j1 += match.score1
-    elif match.joueur2 == 2:
-        tournoi.score_j2 += match.score2
-    elif match.joueur2 == 3:
-        tournoi.score_j3 += match.score3
-    elif match.joueur2 == 4:
-        tournoi.score_j4 += match.score4
-    elif match.joueur2 == 5:
-        tournoi.score_j5 += match.score5
-    elif match.joueur2 == 6:
-        tournoi.score_j6 += match.score6
-    elif match.joueur2 == 7:
-        tournoi.score_j7 += match.score7
-
-    if match.joueur3 == 0:
-        tournoi.score_j0 += match.score0
-    elif match.joueur3 == 1:
-        tournoi.score_j1 += match.score1
-    elif match.joueur3 == 2:
-        tournoi.score_j2 += match.score2
-    elif match.joueur3 == 3:
-        tournoi.score_j3 += match.score3
-    elif match.joueur3 == 4:
-        tournoi.score_j4 += match.score4
-    elif match.joueur3 == 5:
-        tournoi.score_j5 += match.score5
-    elif match.joueur3 == 6:
-        tournoi.score_j6 += match.score6
-    elif match.joueur3 == 7:
-        tournoi.score_j7 += match.score7
-
-    if match.joueur4 == 0:
-        tournoi.score_j0 += match.score0
-    elif match.joueur4 == 1:
-        tournoi.score_j1 += match.score1
-    elif match.joueur4 == 2:
-        tournoi.score_j2 += match.score2
-    elif match.joueur4 == 3:
-        tournoi.score_j3 += match.score3
-    elif match.joueur4 == 4:
-        tournoi.score_j4 += match.score4
-    elif match.joueur4 == 5:
-        tournoi.score_j5 += match.score5
-    elif match.joueur4 == 6:
-        tournoi.score_j6 += match.score6
-    elif match.joueur4 == 7:
-        tournoi.score_j7 += match.score7
-
-    if match.joueur5 == 0:
-        tournoi.score_j0 += match.score0
-    elif match.joueur5 == 1:
-        tournoi.score_j1 += match.score1
-    elif match.joueur5 == 2:
-        tournoi.score_j2 += match.score2
-    elif match.joueur5 == 3:
-        tournoi.score_j3 += match.score3
-    elif match.joueur5 == 4:
-        tournoi.score_j4 += match.score4
-    elif match.joueur5 == 5:
-        tournoi.score_j5 += match.score5
-    elif match.joueur5 == 6:
-        tournoi.score_j6 += match.score6
-    elif match.joueur5 == 7:
-        tournoi.score_j7 += match.score7
-
-    if match.joueur6 == 0:
-        tournoi.score_j0 += match.score0
-    elif match.joueur6 == 1:
-        tournoi.score_j1 += match.score1
-    elif match.joueur6 == 2:
-        tournoi.score_j2 += match.score2
-    elif match.joueur6 == 3:
-        tournoi.score_j3 += match.score3
-    elif match.joueur6 == 4:
-        tournoi.score_j4 += match.score4
-    elif match.joueur6 == 5:
-        tournoi.score_j5 += match.score5
-    elif match.joueur6 == 6:
-        tournoi.score_j6 += match.score6
-    elif match.joueur6 == 7:
-        tournoi.score_j7 += match.score7
-
-    if match.joueur7 == 0:
-        tournoi.score_j0 += match.score0
-    elif match.joueur7 == 1:
-        tournoi.score_j1 += match.score1
-    elif match.joueur7 == 2:
-        tournoi.score_j2 += match.score2
-    elif match.joueur7 == 3:
-        tournoi.score_j3 += match.score3
-    elif match.joueur7 == 4:
-        tournoi.score_j4 += match.score4
-    elif match.joueur7 == 5:
-        tournoi.score_j5 += match.score5
-    elif match.joueur7 == 6:
-        tournoi.score_j6 += match.score6
-    elif match.joueur7 == 7:
-        tournoi.score_j7 += match.score7
 
 def quitter():
     """ Quitter l'application """
