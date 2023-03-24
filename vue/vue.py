@@ -303,7 +303,7 @@ class Vue:
     @staticmethod
     def afficher_gagnant(classement):
         """Affiche le gagnant du tournoi"""
-
+        print(classement)
         gagnant = f'classement{classement[1]} avec {classement[4]} points !'
 
         print(f"Le gagnant du tournoi est {gagnant}")

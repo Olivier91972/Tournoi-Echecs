@@ -1006,7 +1006,7 @@ class Controleur:
                             update_tournoi(datatournois)
                             self.liste_matchs_auto_r4()
 
-                        #Attention ne pas oublier de terminer le Round 4 si le dernier match est terminé !!!!!!!!!
+                        # Attention ne pas oublier de terminer le Round 4 si le dernier match est terminé !!!!!!!!!
 
                         else:
                             update_tournoi(datatournois)
@@ -1015,7 +1015,6 @@ class Controleur:
     def liste_matchs_auto_r1(self):
         """ Permet de lister les matchs en fonction"""
         self.infos = "infos"  # juste pour enlever erreur creation méthode statique !
-
         with open("../modele/data/tournaments/tournois.json", "r") as f:
             datatournois = json.load(f)
 
@@ -1035,21 +1034,38 @@ class Controleur:
         tournoi.score_j5 = datatournois[f'{idtn}'][0]["score_j5"]
         tournoi.score_j6 = datatournois[f'{idtn}'][0]["score_j6"]
         tournoi.score_j7 = datatournois[f'{idtn}'][0]["score_j7"]
+        match.score0 = datatournois[f'{idtn}'][0]["score0"]
+        match.score1 = datatournois[f'{idtn}'][0]["score1"]
+        match.score2 = datatournois[f'{idtn}'][0]["score2"]
+        match.score3 = datatournois[f'{idtn}'][0]["score3"]
+        match.score4 = datatournois[f'{idtn}'][0]["score4"]
+        match.score5 = datatournois[f'{idtn}'][0]["score5"]
+        match.score6 = datatournois[f'{idtn}'][0]["score6"]
+        match.score7 = datatournois[f'{idtn}'][0]["score7"]
+
+        # Initialisation du score pts pour le prochain match
+        match.score0 = 0.0
+        match.score1 = 0.0
+        match.score2 = 0.0
+        match.score3 = 0.0
+        match.score4 = 0.0
+        match.score5 = 0.0
+        match.score6 = 0.0
+        match.score7 = 0.0
+
 
         #print(tournoi.matchs_r1)
 
         #print(tournoi.lj_r1)
 
-
         liste_joueurs = [int(tournoi.matchs_r1[2]), int(tournoi.matchs_r1[5]), int(tournoi.matchs_r1[10]),
                          int(tournoi.matchs_r1[13]), int(tournoi.matchs_r1[18]), int(tournoi.matchs_r1[21]),
                          int(tournoi.matchs_r1[26]), int(tournoi.matchs_r1[29])]
-        #print(sorted(liste_joueurs, reverse=False))
+        #print(sorted(liste_joueurs, reverse=False)) si oui !!! problème de joueurs déjajoué !!!
         for i in liste_joueurs:
             setattr(match, "joueur" + str(i), liste_joueurs[i])
 
         rep_scores = self.vue.prompt_quest_liste_match()
-
 
         # retourne 1: oui ou 2: non
         if rep_scores == 1:  # manuel
@@ -1137,6 +1153,13 @@ class Controleur:
         match.paire1 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
         print(match.paire1)
 
+        # permet de mettre des valeurs dans des attributs :
+
+        # print(sorted(liste_joueurs, reverse=False))
+        # for i in liste_joueurs:
+        #     setattr(match, "joueur" + str(i), liste_joueurs[i])
+        #
+
         print()
         if match.score0 > match.score1:
             print(f'----------Le joueur {match.joueur0} a gagné le match du Round{num_round} !----------')
@@ -1215,25 +1238,141 @@ class Controleur:
 
             self.serialiser_obj_tournois()
 
-            # joueur0 = Joueur(nom=datajoueurs["0"][0]["nom"], prenom=datajoueurs["0"][0]["prenom"], daten=None)
-            # joueur1 = Joueur(nom=datajoueurs["1"][0]["nom"], prenom=datajoueurs["1"][0]["prenom"], daten=None)
-            # joueur2 = Joueur(nom=datajoueurs["2"][0]["nom"], prenom=datajoueurs["2"][0]["prenom"], daten=None)
-            # joueur3 = Joueur(nom=datajoueurs["3"][0]["nom"], prenom=datajoueurs["3"][0]["prenom"], daten=None)
-            # joueur4 = Joueur(nom=datajoueurs["4"][0]["nom"], prenom=datajoueurs["4"][0]["prenom"], daten=None)
-            # joueur5 = Joueur(nom=datajoueurs["5"][0]["nom"], prenom=datajoueurs["5"][0]["prenom"], daten=None)
-            # joueur6 = Joueur(nom=datajoueurs["6"][0]["nom"], prenom=datajoueurs["6"][0]["prenom"], daten=None)
-            # joueur7 = Joueur(nom=datajoueurs["7"][0]["nom"], prenom=datajoueurs["7"][0]["prenom"], daten=None)
-            # joueur9 = Joueur(nom=datajoueurs[8][0]["nom"], prenom=datajoueurs[8][0]["prenom"], daten=None)
-            # pas plus de 10 joueurs car problème recup 2 digits lors des matchs/scores/points !!!!
+        if match.joueur0 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur0 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur0 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur0 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur0 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur0 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur0 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur0 == 7:
+            tournoi.score_j7 += match.score7
 
-        tournoi.score_j0 += match.score0
-        tournoi.score_j1 += match.score1
-        tournoi.score_j2 += match.score2
-        tournoi.score_j3 += match.score3
-        tournoi.score_j4 += match.score4
-        tournoi.score_j5 += match.score5
-        tournoi.score_j6 += match.score6
-        tournoi.score_j7 += match.score7
+        if match.joueur1 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur1 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur1 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur1 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur1 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur1 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur1 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur1 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur2 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur2 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur2 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur2 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur2 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur2 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur2 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur2 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur3 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur3 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur3 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur3 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur3 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur3 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur3 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur3 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur4 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur4 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur4 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur4 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur4 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur4 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur4 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur4 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur5 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur5 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur5 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur5 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur5 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur5 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur5 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur5 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur6 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur6 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur6 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur6 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur6 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur6 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur6 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur6 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur7 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur7 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur7 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur7 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur7 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur7 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur7 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur7 == 7:
+            tournoi.score_j7 += match.score7
 
         joueursdict = [
             {"nom": datajoueurs[f'{match.joueur0}'][0]["nom"] + " " + datajoueurs[f'{match.joueur0}'][0]["prenom"],
@@ -1262,7 +1401,7 @@ class Controleur:
         for x1 in joueursdict_tries:
             classement.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
             position += 1
-
+        print(f'classement{classement}')
         self.vue.afficher_classement(num_round, classement)
 
         time.sleep(0.8)
@@ -1307,75 +1446,122 @@ class Controleur:
         tournoi.score_j5 = datatournois[f'{idtn}'][0]["score_j5"]
         tournoi.score_j6 = datatournois[f'{idtn}'][0]["score_j6"]
         tournoi.score_j7 = datatournois[f'{idtn}'][0]["score_j7"]
+        match.score0 = datatournois[f'{idtn}'][0]["score0"]
+        match.score1 = datatournois[f'{idtn}'][0]["score1"]
+        match.score2 = datatournois[f'{idtn}'][0]["score2"]
+        match.score3 = datatournois[f'{idtn}'][0]["score3"]
+        match.score4 = datatournois[f'{idtn}'][0]["score4"]
+        match.score5 = datatournois[f'{idtn}'][0]["score5"]
+        match.score6 = datatournois[f'{idtn}'][0]["score6"]
+        match.score7 = datatournois[f'{idtn}'][0]["score7"]
+
+        # Initialisation du score pts pour le prochain match
+        match.score0 = 0.0
+        match.score1 = 0.0
+        match.score2 = 0.0
+        match.score3 = 0.0
+        match.score4 = 0.0
+        match.score5 = 0.0
+        match.score6 = 0.0
+        match.score7 = 0.0
+
 
         print(f'tournoi.matchs_r2{tournoi.matchs_r2}')
+
 
         #print(tournoi.lj_r2)
 
         liste_joueurs = (tournoi.matchs_r2[0], tournoi.matchs_r2[1], tournoi.matchs_r2[2],
                          tournoi.matchs_r2[3], tournoi.matchs_r2[4], tournoi.matchs_r2[5],
                          tournoi.matchs_r2[6], tournoi.matchs_r2[7])
-        liste_joueurs_int = int(tournoi.matchs_r2[0]), int(tournoi.matchs_r2[1]), int(tournoi.matchs_r2[2]), \
-                            int(tournoi.matchs_r2[3]), int(tournoi.matchs_r2[4]), int(tournoi.matchs_r2[5]), \
-                            int(tournoi.matchs_r2[6]), int(tournoi.matchs_r2[7])
-        #print(sorted(liste_joueurs, reverse=False))
-        for i in liste_joueurs_int:
-            setattr(match, "joueur" + str(i), liste_joueurs_int[i])
+        liste_joueurs_int = [int(tournoi.matchs_r2[0]), int(tournoi.matchs_r2[1]), int(tournoi.matchs_r2[2]),
+                             int(tournoi.matchs_r2[3]), int(tournoi.matchs_r2[4]), int(tournoi.matchs_r2[5]),
+                             int(tournoi.matchs_r2[6]), int(tournoi.matchs_r2[7])]
+        # print("liste_joueurs_int:")
+        # print(sorted(liste_joueurs_int, reverse=False))   attention si oui probl dejajoué
 
-            # # ----------MATCH 1 ----- ROUND 2 ----------
-            # match.joueur0 = tournoi.matchs_r2[0]
-            # match.joueur1 = tournoi.matchs_r2[1]
-            # # ----------MATCH 2 ----- ROUND 2 ----------
-            # match.joueur2 = tournoi.matchs_r2[2]
-            # match.joueur3 = tournoi.matchs_r2[3]
-            # # ----------MATCH 3 ----- ROUND 2 ----------
-            # match.joueur4 = tournoi.matchs_r2[4]
-            # match.joueur5 = tournoi.matchs_r2[5]
-            # # ----------MATCH 4 ----- ROUND 2 ----------
-            # match.joueur6 = tournoi.matchs_r2[6]
-            # match.joueur7 = tournoi.matchs_r2[7]
+        rep_scores = self.vue.prompt_quest_liste_match()
 
-        a = 1.0
-        b = 0.5
-        c = 0.0
-        x = [a, b, c]
-        random.choice(x)
-        score0 = random.choice([a, b, c])
-        score2 = random.choice([a, b, c])
-        score4 = random.choice([a, b, c])
-        score6 = random.choice([a, b, c])
-        match.score0 = score0
-        match.score2 = score2
-        match.score4 = score4
-        match.score6 = score6
+        # retourne 1: oui ou 2: non
+        if rep_scores == 1:  # manuel
+            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+            match.score0 = score0
+            match.score2 = score2
+            match.score4 = score4
+            match.score6 = score6
+            if match.score0 == 1.0:
+                match.score1 = 0.0
+            elif match.score0 == 0.0:
+                match.score1 = 1.0
+            elif match.score0 == 0.5:
+                match.score1 = 0.5
 
-        if match.score0 == 1.0:
-            match.score1 = 0.0
-        elif match.score0 == 0.0:
-            match.score1 = 1.0
-        elif match.score0 == 0.5:
-            match.score1 = 0.5
+            if match.score2 == 1.0:
+                match.score3 = 0.0
+            elif match.score2 == 0.0:
+                match.score3 = 1.0
+            elif match.score2 == 0.5:
+                match.score3 = 0.5
 
-        if match.score2 == 1.0:
-            match.score3 = 0.0
-        elif match.score2 == 0.0:
-            match.score3 = 1.0
-        elif match.score2 == 0.5:
-            match.score3 = 0.5
+            if match.score4 == 1.0:
+                match.score5 = 0.0
+            elif match.score4 == 0.0:
+                match.score5 = 1.0
+            elif match.score4 == 0.5:
+                match.score5 = 0.5
 
-        if match.score4 == 1.0:
-            match.score5 = 0.0
-        elif match.score4 == 0.0:
-            match.score5 = 1.0
-        elif match.score4 == 0.5:
-            match.score5 = 0.5
+            if match.score6 == 1.0:
+                match.score7 = 0.0
+            elif match.score6 == 0.0:
+                match.score7 = 1.0
+            elif match.score6 == 0.5:
+                match.score7 = 0.5
 
-        if match.score6 == 1.0:
-            match.score7 = 0.0
-        elif match.score6 == 0.0:
-            match.score7 = 1.0
-        elif match.score6 == 0.5:
-            match.score7 = 0.5
+        elif rep_scores == 0:  # Automatique
+            a = 1.0
+            b = 0.5
+            c = 0.0
+            x = [a, b, c]
+            random.choice(x)
+            score0 = random.choice([a, b, c])
+            score2 = random.choice([a, b, c])
+            score4 = random.choice([a, b, c])
+            score6 = random.choice([a, b, c])
+            match.score0 = score0
+            match.score2 = score2
+            match.score4 = score4
+            match.score6 = score6
+            if match.score0 == 1.0:
+                match.score1 = 0.0
+            elif match.score0 == 0.0:
+                match.score1 = 1.0
+            elif match.score0 == 0.5:
+                match.score1 = 0.5
+
+            if match.score2 == 1.0:
+                match.score3 = 0.0
+            elif match.score2 == 0.0:
+                match.score3 = 1.0
+            elif match.score2 == 0.5:
+                match.score3 = 0.5
+
+            if match.score4 == 1.0:
+                match.score5 = 0.0
+            elif match.score4 == 0.0:
+                match.score5 = 1.0
+            elif match.score4 == 0.5:
+                match.score5 = 0.5
+
+            if match.score6 == 1.0:
+                match.score7 = 0.0
+            elif match.score6 == 0.0:
+                match.score7 = 1.0
+            elif match.score6 == 0.5:
+                match.score7 = 0.5
+        else:
+            self.liste_matchs_auto_r2()
+
+        print(f'tournoi.score_j0: {tournoi.score_j0}')
 
         match_m1_r2 = Match(idtn, num_round, match.joueur0, match.joueur1)
         print()
@@ -1383,6 +1569,7 @@ class Controleur:
         match.paire = tuple[(), ()]
         match.paire1 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
         print(match.paire1)
+
 
         print()
         if match.score0 > match.score1:
@@ -1447,6 +1634,8 @@ class Controleur:
         tournoi.score_m3_r2 = match.paire3
         tournoi.score_m4_r2 = match.paire4
 
+
+
         time.sleep(0.8)
 
         update_tournoi(datatournois)
@@ -1462,27 +1651,171 @@ class Controleur:
 
             self.serialiser_obj_tournois()
 
-            # joueur0 = Joueur(nom=datajoueurs["0"][0]["nom"], prenom=datajoueurs["0"][0]["prenom"], daten=None)
-            # joueur1 = Joueur(nom=datajoueurs["1"][0]["nom"], prenom=datajoueurs["1"][0]["prenom"], daten=None)
-            # joueur2 = Joueur(nom=datajoueurs["2"][0]["nom"], prenom=datajoueurs["2"][0]["prenom"], daten=None)
-            # joueur3 = Joueur(nom=datajoueurs["3"][0]["nom"], prenom=datajoueurs["3"][0]["prenom"], daten=None)
-            # joueur4 = Joueur(nom=datajoueurs["4"][0]["nom"], prenom=datajoueurs["4"][0]["prenom"], daten=None)
-            # joueur5 = Joueur(nom=datajoueurs["5"][0]["nom"], prenom=datajoueurs["5"][0]["prenom"], daten=None)
-            # joueur6 = Joueur(nom=datajoueurs["6"][0]["nom"], prenom=datajoueurs["6"][0]["prenom"], daten=None)
-            # joueur7 = Joueur(nom=datajoueurs["7"][0]["nom"], prenom=datajoueurs["7"][0]["prenom"], daten=None)
-            # joueur9 = Joueur(nom=datajoueurs[8][0]["nom"], prenom=datajoueurs[8][0]["prenom"], daten=None)
             # pas plus de 10 joueurs car problème recup 2 digits lors des matchs/scores/points !!!!
 
-        tournoi.score_j0 += match.score0
-        tournoi.score_j1 += match.score1
-        tournoi.score_j2 += match.score2
-        tournoi.score_j3 += match.score3
-        tournoi.score_j4 += match.score4
-        tournoi.score_j5 += match.score5
-        tournoi.score_j6 += match.score6
-        tournoi.score_j7 += match.score7
+        print(sorted(liste_joueurs_int, reverse=False))
+        print(f"liste_joueurs_int: {liste_joueurs_int}")
 
-        joueursdict = [
+        for i in liste_joueurs_int:
+            setattr(match, "joueur" + str(i), liste_joueurs_int[i])
+
+        # !!! cas non géré: !!!
+        # if match.joueur0 == 3:
+        #     tournoi.score_j3 += match.score0
+        # elif match.joueur2 == 0:
+        #     tournoi.score_j0 += match.score2
+        # elif match.joueur3 == 6:
+        #     tournoi.score_j6 += match.score3
+
+        # cas_scores()
+        self.serialiser_obj_tournois()
+
+        if match.joueur0 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur0 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur0 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur0 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur0 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur0 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur0 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur0 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur1 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur1 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur1 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur1 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur1 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur1 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur1 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur1 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur2 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur2 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur2 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur2 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur2 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur2 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur2 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur2 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur3 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur3 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur3 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur3 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur3 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur3 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur3 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur3 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur4 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur4 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur4 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur4 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur4 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur4 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur4 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur4 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur5 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur5 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur5 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur5 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur5 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur5 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur5 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur5 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur6 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur6 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur6 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur6 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur6 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur6 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur6 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur6 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur7 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur7 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur7 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur7 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur7 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur7 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur7 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur7 == 7:
+            tournoi.score_j7 += match.score7
+
+        # tournoi.score_j0 += match.score0
+        # tournoi.score_j1 += match.score1
+        # tournoi.score_j2 += match.score2
+        # tournoi.score_j3 += match.score3
+        # tournoi.score_j4 += match.score4
+        # tournoi.score_j5 += match.score5
+        # tournoi.score_j6 += match.score6
+        # tournoi.score_j7 += match.score7
+
+        joueursdict2 = [
             {"nom": datajoueurs[f'{match.joueur0}'][0]["nom"] + " " + datajoueurs[f'{match.joueur0}'][0]["prenom"],
              "idj": match.joueur0, "points": match.score0, "pts total": tournoi.score_j0},
             {"nom": datajoueurs[f'{match.joueur1}'][0]["nom"] + " " + datajoueurs[f'{match.joueur1}'][0]["prenom"],
@@ -1502,21 +1835,28 @@ class Controleur:
             ]
         # score_r2 contient les points qui se mettent à jour apres chaque match !!!
 
-        joueursdict_tries = sorted(joueursdict, key=lambda x1: x1["pts total"], reverse=True)
+        print(f'tournoi.score_j0: {tournoi.score_j0}')
 
-        classement = []
+        # scores_dict = [
+        #     {"nom": datajoueurs[f'{tournoi.score_m1_r2[0][0]}'][0]["nom"], "pts": tournoi.score_j0}
+        # ]
+        # print(f'scores_dict: {scores_dict}')
+
+        joueursdict_tries2 = sorted(joueursdict2, key=lambda x1: x1["pts total"], reverse=True)
+
+        classement2 = []
         position = 1
-        for x1 in joueursdict_tries:
-            classement.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
+        for x1 in joueursdict_tries2:
+            classement2.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
             position += 1
-
-        self.vue.afficher_classement(num_round, classement)
+        print(f'classement: {classement2}')
+        self.vue.afficher_classement(num_round, classement2)
 
         time.sleep(0.8)
 
         # print("liste en fonction des points")
         liste_lj_r3 = []
-        for x3 in classement:
+        for x3 in classement2:
             ljr3 = x3[2]
             liste_lj_r3.append(str(ljr3))
         # print(liste_lj_r3)
@@ -1554,6 +1894,24 @@ class Controleur:
         tournoi.score_j5 = datatournois[f'{idtn}'][0]["score_j5"]
         tournoi.score_j6 = datatournois[f'{idtn}'][0]["score_j6"]
         tournoi.score_j7 = datatournois[f'{idtn}'][0]["score_j7"]
+        match.score0 = datatournois[f'{idtn}'][0]["score0"]
+        match.score1 = datatournois[f'{idtn}'][0]["score1"]
+        match.score2 = datatournois[f'{idtn}'][0]["score2"]
+        match.score3 = datatournois[f'{idtn}'][0]["score3"]
+        match.score4 = datatournois[f'{idtn}'][0]["score4"]
+        match.score5 = datatournois[f'{idtn}'][0]["score5"]
+        match.score6 = datatournois[f'{idtn}'][0]["score6"]
+        match.score7 = datatournois[f'{idtn}'][0]["score7"]
+
+        # Initialisation du score pts pour le prochain match
+        match.score0 = 0.0
+        match.score1 = 0.0
+        match.score2 = 0.0
+        match.score3 = 0.0
+        match.score4 = 0.0
+        match.score5 = 0.0
+        match.score6 = 0.0
+        match.score7 = 0.0
 
         print(f'tournoi.matchs_r3{tournoi.matchs_r3}')
 
@@ -1562,54 +1920,96 @@ class Controleur:
         liste_joueurs = (tournoi.matchs_r3[0], tournoi.matchs_r3[1], tournoi.matchs_r3[2],
                          tournoi.matchs_r3[3], tournoi.matchs_r3[4], tournoi.matchs_r3[5],
                          tournoi.matchs_r3[6], tournoi.matchs_r3[7])
-        liste_joueurs_int = int(tournoi.matchs_r3[0]), int(tournoi.matchs_r3[1]), int(tournoi.matchs_r3[2]),\
-                            int(tournoi.matchs_r3[3]), int(tournoi.matchs_r3[4]), int(tournoi.matchs_r3[5]),\
-                            int(tournoi.matchs_r3[6]), int(tournoi.matchs_r3[7])
-        # print(sorted(liste_joueurs, reverse=False))
+        liste_joueurs_int = [int(tournoi.matchs_r3[0]), int(tournoi.matchs_r3[1]), int(tournoi.matchs_r3[2]),
+                             int(tournoi.matchs_r3[3]), int(tournoi.matchs_r3[4]), int(tournoi.matchs_r3[5]),
+                             int(tournoi.matchs_r3[6]), int(tournoi.matchs_r3[7])]
+
+        # print(sorted(liste_joueurs_int, reverse=False)) attention si oui prbl dejajoué
+        # print(f"liste_joueurs_int: {liste_joueurs_int}")
+
         for i in liste_joueurs_int:
             setattr(match, "joueur" + str(i), liste_joueurs_int[i])
 
-        a = 1.0
-        b = 0.5
-        c = 0.0
-        x = [a, b, c]
-        random.choice(x)
-        score0 = random.choice([a, b, c])
-        score2 = random.choice([a, b, c])
-        score4 = random.choice([a, b, c])
-        score6 = random.choice([a, b, c])
-        match.score0 = score0
-        match.score2 = score2
-        match.score4 = score4
-        match.score6 = score6
+        rep_scores = self.vue.prompt_quest_liste_match()
 
-        if match.score0 == 1.0:
-            match.score1 = 0.0
-        elif match.score0 == 0.0:
-            match.score1 = 1.0
-        elif match.score0 == 0.5:
-            match.score1 = 0.5
+        # retourne 1: oui ou 2: non
+        if rep_scores == 1:  # manuel
+            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+            match.score0 = score0
+            match.score2 = score2
+            match.score4 = score4
+            match.score6 = score6
+            if match.score0 == 1.0:
+                match.score1 = 0.0
+            elif match.score0 == 0.0:
+                match.score1 = 1.0
+            elif match.score0 == 0.5:
+                match.score1 = 0.5
 
-        if match.score2 == 1.0:
-            match.score3 = 0.0
-        elif match.score2 == 0.0:
-            match.score3 = 1.0
-        elif match.score2 == 0.5:
-            match.score3 = 0.5
+            if match.score2 == 1.0:
+                match.score3 = 0.0
+            elif match.score2 == 0.0:
+                match.score3 = 1.0
+            elif match.score2 == 0.5:
+                match.score3 = 0.5
 
-        if match.score4 == 1.0:
-            match.score5 = 0.0
-        elif match.score4 == 0.0:
-            match.score5 = 1.0
-        elif match.score4 == 0.5:
-            match.score5 = 0.5
+            if match.score4 == 1.0:
+                match.score5 = 0.0
+            elif match.score4 == 0.0:
+                match.score5 = 1.0
+            elif match.score4 == 0.5:
+                match.score5 = 0.5
 
-        if match.score6 == 1.0:
-            match.score7 = 0.0
-        elif match.score6 == 0.0:
-            match.score7 = 1.0
-        elif match.score6 == 0.5:
-            match.score7 = 0.5
+            if match.score6 == 1.0:
+                match.score7 = 0.0
+            elif match.score6 == 0.0:
+                match.score7 = 1.0
+            elif match.score6 == 0.5:
+                match.score7 = 0.5
+
+        elif rep_scores == 0:  # Automatique
+            a = 1.0
+            b = 0.5
+            c = 0.0
+            x = [a, b, c]
+            random.choice(x)
+            score0 = random.choice([a, b, c])
+            score2 = random.choice([a, b, c])
+            score4 = random.choice([a, b, c])
+            score6 = random.choice([a, b, c])
+            match.score0 = score0
+            match.score2 = score2
+            match.score4 = score4
+            match.score6 = score6
+            if match.score0 == 1.0:
+                match.score1 = 0.0
+            elif match.score0 == 0.0:
+                match.score1 = 1.0
+            elif match.score0 == 0.5:
+                match.score1 = 0.5
+
+            if match.score2 == 1.0:
+                match.score3 = 0.0
+            elif match.score2 == 0.0:
+                match.score3 = 1.0
+            elif match.score2 == 0.5:
+                match.score3 = 0.5
+
+            if match.score4 == 1.0:
+                match.score5 = 0.0
+            elif match.score4 == 0.0:
+                match.score5 = 1.0
+            elif match.score4 == 0.5:
+                match.score5 = 0.5
+
+            if match.score6 == 1.0:
+                match.score7 = 0.0
+            elif match.score6 == 0.0:
+                match.score7 = 1.0
+            elif match.score6 == 0.5:
+                match.score7 = 0.5
+        else:
+            self.liste_matchs_auto_r3()
 
         match_m1_r3 = Match(idtn, num_round, match.joueur0, match.joueur1)
         print()
@@ -1696,27 +2096,153 @@ class Controleur:
 
             self.serialiser_obj_tournois()
 
-            # joueur0 = Joueur(nom=datajoueurs["0"][0]["nom"], prenom=datajoueurs["0"][0]["prenom"], daten=None)
-            # joueur1 = Joueur(nom=datajoueurs["1"][0]["nom"], prenom=datajoueurs["1"][0]["prenom"], daten=None)
-            # joueur2 = Joueur(nom=datajoueurs["2"][0]["nom"], prenom=datajoueurs["2"][0]["prenom"], daten=None)
-            # joueur3 = Joueur(nom=datajoueurs["3"][0]["nom"], prenom=datajoueurs["3"][0]["prenom"], daten=None)
-            # joueur4 = Joueur(nom=datajoueurs["4"][0]["nom"], prenom=datajoueurs["4"][0]["prenom"], daten=None)
-            # joueur5 = Joueur(nom=datajoueurs["5"][0]["nom"], prenom=datajoueurs["5"][0]["prenom"], daten=None)
-            # joueur6 = Joueur(nom=datajoueurs["6"][0]["nom"], prenom=datajoueurs["6"][0]["prenom"], daten=None)
-            # joueur7 = Joueur(nom=datajoueurs["7"][0]["nom"], prenom=datajoueurs["7"][0]["prenom"], daten=None)
-            # joueur9 = Joueur(nom=datajoueurs[8][0]["nom"], prenom=datajoueurs[8][0]["prenom"], daten=None)
             # pas plus de 10 joueurs car problème recup 2 digits lors des matchs/scores/points !!!!
 
-        tournoi.score_j0 += match.score0
-        tournoi.score_j1 += match.score1
-        tournoi.score_j2 += match.score2
-        tournoi.score_j3 += match.score3
-        tournoi.score_j4 += match.score4
-        tournoi.score_j5 += match.score5
-        tournoi.score_j6 += match.score6
-        tournoi.score_j7 += match.score7
+        print(sorted(liste_joueurs_int, reverse=False))
+        print(f"liste_joueurs_int: {liste_joueurs_int}")
 
-        joueursdict = [
+        for i in liste_joueurs_int:
+            setattr(match, "joueur" + str(i), liste_joueurs_int[i])
+
+        self.serialiser_obj_tournois()
+
+        if match.joueur0 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur0 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur0 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur0 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur0 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur0 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur0 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur0 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur1 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur1 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur1 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur1 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur1 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur1 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur1 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur1 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur2 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur2 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur2 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur2 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur2 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur2 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur2 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur2 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur3 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur3 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur3 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur3 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur3 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur3 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur3 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur3 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur4 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur4 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur4 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur4 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur4 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur4 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur4 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur4 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur5 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur5 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur5 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur5 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur5 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur5 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur5 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur5 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur6 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur6 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur6 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur6 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur6 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur6 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur6 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur6 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur7 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur7 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur7 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur7 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur7 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur7 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur7 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur7 == 7:
+            tournoi.score_j7 += match.score7
+
+        joueursdict3 = [
             {"nom": datajoueurs[f'{match.joueur0}'][0]["nom"] + " " + datajoueurs[f'{match.joueur0}'][0]["prenom"],
              "idj": match.joueur0, "points": match.score0, "pts total": tournoi.score_j0},
             {"nom": datajoueurs[f'{match.joueur1}'][0]["nom"] + " " + datajoueurs[f'{match.joueur1}'][0]["prenom"],
@@ -1736,21 +2262,21 @@ class Controleur:
             ]
         # score_r3 contient les points qui se mettent à jour apres chaque match !!!
 
-        joueursdict_tries = sorted(joueursdict, key=lambda x1: x1["pts total"], reverse=True)
+        joueursdict_tries3 = sorted(joueursdict3, key=lambda x1: x1["pts total"], reverse=True)
 
-        classement = []
+        classement3 = []
         position = 1
-        for x1 in joueursdict_tries:
-            classement.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
+        for x1 in joueursdict_tries3:
+            classement3.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
             position += 1
 
-        self.vue.afficher_classement(num_round, classement)
+        self.vue.afficher_classement(num_round, classement3)
 
         time.sleep(0.8)
 
         # print("liste en fonction des points")
         liste_lj_r4 = []
-        for x4 in classement:
+        for x4 in classement3:
             ljr4 = x4[2]
             liste_lj_r4.append(str(ljr4))
         # print(liste_lj_r4)
@@ -1788,6 +2314,24 @@ class Controleur:
         tournoi.score_j5 = datatournois[f'{idtn}'][0]["score_j5"]
         tournoi.score_j6 = datatournois[f'{idtn}'][0]["score_j6"]
         tournoi.score_j7 = datatournois[f'{idtn}'][0]["score_j7"]
+        match.score0 = datatournois[f'{idtn}'][0]["score0"]
+        match.score1 = datatournois[f'{idtn}'][0]["score1"]
+        match.score2 = datatournois[f'{idtn}'][0]["score2"]
+        match.score3 = datatournois[f'{idtn}'][0]["score3"]
+        match.score4 = datatournois[f'{idtn}'][0]["score4"]
+        match.score5 = datatournois[f'{idtn}'][0]["score5"]
+        match.score6 = datatournois[f'{idtn}'][0]["score6"]
+        match.score7 = datatournois[f'{idtn}'][0]["score7"]
+
+        # Initialisation du score pts pour le prochain match
+        match.score0 = 0.0
+        match.score1 = 0.0
+        match.score2 = 0.0
+        match.score3 = 0.0
+        match.score4 = 0.0
+        match.score5 = 0.0
+        match.score6 = 0.0
+        match.score7 = 0.0
 
         print(f'tournoi.matchs_r4{tournoi.matchs_r4}')
 
@@ -1796,54 +2340,96 @@ class Controleur:
         liste_joueurs = (tournoi.matchs_r4[0], tournoi.matchs_r4[1], tournoi.matchs_r4[2],
                          tournoi.matchs_r4[3], tournoi.matchs_r4[4], tournoi.matchs_r4[5],
                          tournoi.matchs_r4[6], tournoi.matchs_r4[7])
-        liste_joueurs_int = int(tournoi.matchs_r4[0]), int(tournoi.matchs_r4[1]), int(tournoi.matchs_r4[2]),\
-                            int(tournoi.matchs_r4[3]), int(tournoi.matchs_r4[4]), int(tournoi.matchs_r4[5]),\
-                            int(tournoi.matchs_r4[6]), int(tournoi.matchs_r4[7])
-        # print(sorted(liste_joueurs, reverse=False))
+        liste_joueurs_int = [int(tournoi.matchs_r4[0]), int(tournoi.matchs_r4[1]), int(tournoi.matchs_r4[2]),
+                             int(tournoi.matchs_r4[3]), int(tournoi.matchs_r4[4]), int(tournoi.matchs_r4[5]),
+                             int(tournoi.matchs_r4[6]), int(tournoi.matchs_r4[7])]
+
+        # print(sorted(liste_joueurs_int, reverse=False)) attention si oui probl dejajoue
+        # print(f"liste_joueurs_int: {liste_joueurs_int}")
+
         for i in liste_joueurs_int:
             setattr(match, "joueur" + str(i), liste_joueurs_int[i])
 
-        a = 1.0
-        b = 0.5
-        c = 0.0
-        x = [a, b, c]
-        random.choice(x)
-        score0 = random.choice([a, b, c])
-        score2 = random.choice([a, b, c])
-        score4 = random.choice([a, b, c])
-        score6 = random.choice([a, b, c])
-        match.score0 = score0
-        match.score2 = score2
-        match.score4 = score4
-        match.score6 = score6
+        rep_scores = self.vue.prompt_quest_liste_match()
 
-        if match.score0 == 1.0:
-            match.score1 = 0.0
-        elif match.score0 == 0.0:
-            match.score1 = 1.0
-        elif match.score0 == 0.5:
-            match.score1 = 0.5
+        # retourne 1: oui ou 2: non
+        if rep_scores == 1:  # manuel
+            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+            match.score0 = score0
+            match.score2 = score2
+            match.score4 = score4
+            match.score6 = score6
+            if match.score0 == 1.0:
+                match.score1 = 0.0
+            elif match.score0 == 0.0:
+                match.score1 = 1.0
+            elif match.score0 == 0.5:
+                match.score1 = 0.5
 
-        if match.score2 == 1.0:
-            match.score3 = 0.0
-        elif match.score2 == 0.0:
-            match.score3 = 1.0
-        elif match.score2 == 0.5:
-            match.score3 = 0.5
+            if match.score2 == 1.0:
+                match.score3 = 0.0
+            elif match.score2 == 0.0:
+                match.score3 = 1.0
+            elif match.score2 == 0.5:
+                match.score3 = 0.5
 
-        if match.score4 == 1.0:
-            match.score5 = 0.0
-        elif match.score4 == 0.0:
-            match.score5 = 1.0
-        elif match.score4 == 0.5:
-            match.score5 = 0.5
+            if match.score4 == 1.0:
+                match.score5 = 0.0
+            elif match.score4 == 0.0:
+                match.score5 = 1.0
+            elif match.score4 == 0.5:
+                match.score5 = 0.5
 
-        if match.score6 == 1.0:
-            match.score7 = 0.0
-        elif match.score6 == 0.0:
-            match.score7 = 1.0
-        elif match.score6 == 0.5:
-            match.score7 = 0.5
+            if match.score6 == 1.0:
+                match.score7 = 0.0
+            elif match.score6 == 0.0:
+                match.score7 = 1.0
+            elif match.score6 == 0.5:
+                match.score7 = 0.5
+
+        elif rep_scores == 0:  # Automatique
+            a = 1.0
+            b = 0.5
+            c = 0.0
+            x = [a, b, c]
+            random.choice(x)
+            score0 = random.choice([a, b, c])
+            score2 = random.choice([a, b, c])
+            score4 = random.choice([a, b, c])
+            score6 = random.choice([a, b, c])
+            match.score0 = score0
+            match.score2 = score2
+            match.score4 = score4
+            match.score6 = score6
+            if match.score0 == 1.0:
+                match.score1 = 0.0
+            elif match.score0 == 0.0:
+                match.score1 = 1.0
+            elif match.score0 == 0.5:
+                match.score1 = 0.5
+
+            if match.score2 == 1.0:
+                match.score3 = 0.0
+            elif match.score2 == 0.0:
+                match.score3 = 1.0
+            elif match.score2 == 0.5:
+                match.score3 = 0.5
+
+            if match.score4 == 1.0:
+                match.score5 = 0.0
+            elif match.score4 == 0.0:
+                match.score5 = 1.0
+            elif match.score4 == 0.5:
+                match.score5 = 0.5
+
+            if match.score6 == 1.0:
+                match.score7 = 0.0
+            elif match.score6 == 0.0:
+                match.score7 = 1.0
+            elif match.score6 == 0.5:
+                match.score7 = 0.5
+        else:
+            self.liste_matchs_auto_r4()
 
         match_m1_r4 = Match(idtn, num_round, match.joueur0, match.joueur1)
         print()
@@ -1930,27 +2516,153 @@ class Controleur:
 
             self.serialiser_obj_tournois()
 
-            # joueur0 = Joueur(nom=datajoueurs["0"][0]["nom"], prenom=datajoueurs["0"][0]["prenom"], daten=None)
-            # joueur1 = Joueur(nom=datajoueurs["1"][0]["nom"], prenom=datajoueurs["1"][0]["prenom"], daten=None)
-            # joueur2 = Joueur(nom=datajoueurs["2"][0]["nom"], prenom=datajoueurs["2"][0]["prenom"], daten=None)
-            # joueur3 = Joueur(nom=datajoueurs["3"][0]["nom"], prenom=datajoueurs["3"][0]["prenom"], daten=None)
-            # joueur4 = Joueur(nom=datajoueurs["4"][0]["nom"], prenom=datajoueurs["4"][0]["prenom"], daten=None)
-            # joueur5 = Joueur(nom=datajoueurs["5"][0]["nom"], prenom=datajoueurs["5"][0]["prenom"], daten=None)
-            # joueur6 = Joueur(nom=datajoueurs["6"][0]["nom"], prenom=datajoueurs["6"][0]["prenom"], daten=None)
-            # joueur7 = Joueur(nom=datajoueurs["7"][0]["nom"], prenom=datajoueurs["7"][0]["prenom"], daten=None)
-            # joueur9 = Joueur(nom=datajoueurs[8][0]["nom"], prenom=datajoueurs[8][0]["prenom"], daten=None)
             # pas plus de 10 joueurs car problème recup 2 digits lors des matchs/scores/points !!!!
 
-        tournoi.score_j0 += match.score0
-        tournoi.score_j1 += match.score1
-        tournoi.score_j2 += match.score2
-        tournoi.score_j3 += match.score3
-        tournoi.score_j4 += match.score4
-        tournoi.score_j5 += match.score5
-        tournoi.score_j6 += match.score6
-        tournoi.score_j7 += match.score7
+        print(sorted(liste_joueurs_int, reverse=False))
+        print(f"liste_joueurs_int: {liste_joueurs_int}")
 
-        joueursdict = [
+        for i in liste_joueurs_int:
+            setattr(match, "joueur" + str(i), liste_joueurs_int[i])
+
+        self.serialiser_obj_tournois()
+
+        if match.joueur0 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur0 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur0 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur0 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur0 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur0 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur0 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur0 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur1 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur1 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur1 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur1 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur1 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur1 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur1 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur1 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur2 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur2 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur2 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur2 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur2 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur2 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur2 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur2 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur3 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur3 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur3 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur3 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur3 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur3 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur3 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur3 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur4 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur4 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur4 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur4 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur4 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur4 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur4 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur4 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur5 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur5 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur5 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur5 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur5 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur5 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur5 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur5 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur6 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur6 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur6 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur6 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur6 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur6 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur6 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur6 == 7:
+            tournoi.score_j7 += match.score7
+
+        if match.joueur7 == 0:
+            tournoi.score_j0 += match.score0
+        elif match.joueur7 == 1:
+            tournoi.score_j1 += match.score1
+        elif match.joueur7 == 2:
+            tournoi.score_j2 += match.score2
+        elif match.joueur7 == 3:
+            tournoi.score_j3 += match.score3
+        elif match.joueur7 == 4:
+            tournoi.score_j4 += match.score4
+        elif match.joueur7 == 5:
+            tournoi.score_j5 += match.score5
+        elif match.joueur7 == 6:
+            tournoi.score_j6 += match.score6
+        elif match.joueur7 == 7:
+            tournoi.score_j7 += match.score7
+
+        joueursdict4 = [
             {"nom": datajoueurs[f'{match.joueur0}'][0]["nom"] + " " + datajoueurs[f'{match.joueur0}'][0]["prenom"],
              "idj": match.joueur0, "points": match.score0, "pts total": tournoi.score_j0},
             {"nom": datajoueurs[f'{match.joueur1}'][0]["nom"] + " " + datajoueurs[f'{match.joueur1}'][0]["prenom"],
@@ -1970,15 +2682,22 @@ class Controleur:
             ]
         # score_r4 contient les points qui se mettent à jour apres chaque match !!!
 
-        joueursdict_tries = sorted(joueursdict, key=lambda x1: x1["pts total"], reverse=True)
+        # if match.joueur0 == 0:
+        #     score_joueur0 = match.score0
+        # else:
+        #     f'score_joueur{match.joueur0}' = f'match.score{match.joueur0}'
 
-        classement = []
+
+
+        joueursdict_tries4 = sorted(joueursdict4, key=lambda x1: x1["pts total"], reverse=True)
+
+        classement4 = []
         position = 1
-        for x1 in joueursdict_tries:
-            classement.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
+        for x1 in joueursdict_tries4:
+            classement4.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
             position += 1
 
-        self.vue.afficher_classement(num_round, classement)
+        self.vue.afficher_classement(num_round, classement4)
 
         time.sleep(0.8)
 
@@ -1997,15 +2716,14 @@ class Controleur:
 
         # print(f'classement{classement}')
 
-        for x1 in joueursdict_tries:
-            classement.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
+        for x1 in joueursdict_tries4:
+            classement4.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
             break
 
-        self.vue.afficher_gagnant(classement)
+        self.vue.afficher_gagnant(classement4)
         image_gagnant()
         time.sleep(1)
         self.set_menu_options()
-
 
     def ajouter_joueur(self):
         """Permet d'ajouter un joueur dans la base de données via le prompt"""
@@ -2616,6 +3334,292 @@ def update_tournoi(datatournois):
 
     print("Sauvegarde effectuée")
 
+
+def cas_scores():
+    """Permet de gérer l'affectation des scores"""
+
+    if match.joueur0 == 0:  # cas avec autre j dans score 0
+        tournoi.score_j0 += match.score0
+    elif match.joueur0 == 1:
+        tournoi.score_j1 += match.score0
+    elif match.joueur0 == 2:
+        tournoi.score_j2 += match.score0
+    elif match.joueur0 == 3:
+        tournoi.score_j3 += match.score0
+    elif match.joueur0 == 4:
+        tournoi.score_j4 += match.score0
+    elif match.joueur0 == 5:
+        tournoi.score_j5 += match.score0
+    elif match.joueur0 == 6:
+        tournoi.score_j6 += match.score0
+    elif match.joueur0 == 7:
+        tournoi.score_j7 += match.score0
+
+    if match.joueur1 == 0:  # cas avec autre j dans score 1 ...
+        tournoi.score_j0 += match.score1
+    elif match.joueur1 == 1:
+        tournoi.score_j1 += match.score1
+    elif match.joueur1 == 2:
+        tournoi.score_j2 += match.score1
+    elif match.joueur1 == 3:
+        tournoi.score_j3 += match.score1
+    elif match.joueur1 == 4:
+        tournoi.score_j4 += match.score1
+    elif match.joueur1 == 5:
+        tournoi.score_j5 += match.score1
+    elif match.joueur1 == 6:
+        tournoi.score_j6 += match.score1
+    elif match.joueur1 == 7:
+        tournoi.score_j7 += match.score1
+
+    if match.joueur2 == 0:  # cas avec autre j dans score 2 ...
+        tournoi.score_j0 += match.score2
+    elif match.joueur2 == 1:
+        tournoi.score_j1 += match.score2
+    elif match.joueur2 == 2:
+        tournoi.score_j2 += match.score2
+    elif match.joueur2 == 3:
+        tournoi.score_j3 += match.score2
+    elif match.joueur2 == 4:
+        tournoi.score_j4 += match.score2
+    elif match.joueur2 == 5:
+        tournoi.score_j5 += match.score2
+    elif match.joueur2 == 6:
+        tournoi.score_j6 += match.score2
+    elif match.joueur2 == 7:
+        tournoi.score_j7 += match.score2
+
+    if match.joueur3 == 0:  # cas avec autre j dans score 3 ...
+        tournoi.score_j0 += match.score3
+    elif match.joueur3 == 1:
+        tournoi.score_j1 += match.score3
+    elif match.joueur3 == 2:
+        tournoi.score_j2 += match.score3
+    elif match.joueur3 == 3:
+        tournoi.score_j3 += match.score3
+    elif match.joueur3 == 4:
+        tournoi.score_j4 += match.score3
+    elif match.joueur3 == 5:
+        tournoi.score_j5 += match.score3
+    elif match.joueur3 == 6:
+        tournoi.score_j6 += match.score3
+    elif match.joueur3 == 7:
+        tournoi.score_j7 += match.score3
+
+    if match.joueur4 == 0:  # cas avec autre j dans score 4 ...
+        tournoi.score_j0 += match.score4
+    elif match.joueur4 == 1:
+        tournoi.score_j1 += match.score4
+    elif match.joueur4 == 2:
+        tournoi.score_j2 += match.score4
+    elif match.joueur4 == 3:
+        tournoi.score_j3 += match.score4
+    elif match.joueur4 == 4:
+        tournoi.score_j4 += match.score4
+    elif match.joueur4 == 5:
+        tournoi.score_j5 += match.score4
+    elif match.joueur4 == 6:
+        tournoi.score_j6 += match.score4
+    elif match.joueur4 == 7:
+        tournoi.score_j7 += match.score4
+
+    if match.joueur5 == 0:  # cas avec autre j dans score 5 ...
+        tournoi.score_j0 += match.score5
+    elif match.joueur5 == 1:
+        tournoi.score_j1 += match.score5
+    elif match.joueur5 == 2:
+        tournoi.score_j2 += match.score5
+    elif match.joueur5 == 3:
+        tournoi.score_j3 += match.score5
+    elif match.joueur5 == 4:
+        tournoi.score_j4 += match.score5
+    elif match.joueur5 == 5:
+        tournoi.score_j5 += match.score5
+    elif match.joueur5 == 6:
+        tournoi.score_j6 += match.score5
+    elif match.joueur5 == 7:
+        tournoi.score_j7 += match.score5
+
+    if match.joueur6 == 0:  # cas avec autre j dans score 6 ...
+        tournoi.score_j0 += match.score6
+    elif match.joueur6 == 1:
+        tournoi.score_j1 += match.score6
+    elif match.joueur6 == 2:
+        tournoi.score_j2 += match.score6
+    elif match.joueur6 == 3:
+        tournoi.score_j3 += match.score6
+    elif match.joueur6 == 4:
+        tournoi.score_j4 += match.score6
+    elif match.joueur6 == 5:
+        tournoi.score_j5 += match.score6
+    elif match.joueur6 == 6:
+        tournoi.score_j6 += match.score6
+    elif match.joueur6 == 7:
+        tournoi.score_j7 += match.score6
+
+    if match.joueur7 == 0:  # cas avec autre j dans score 7 ...
+        tournoi.score_j0 += match.score7
+    elif match.joueur7 == 1:
+        tournoi.score_j1 += match.score7
+    elif match.joueur7 == 2:
+        tournoi.score_j2 += match.score7
+    elif match.joueur7 == 3:
+        tournoi.score_j3 += match.score7
+    elif match.joueur7 == 4:
+        tournoi.score_j4 += match.score7
+    elif match.joueur7 == 5:
+        tournoi.score_j5 += match.score7
+    elif match.joueur7 == 6:
+        tournoi.score_j6 += match.score7
+    elif match.joueur7 == 7:
+        tournoi.score_j7 += match.score7
+
+    # for xmatch in range(8):
+    #     print(match.joueur1)
+    #     if match.joueur0 == 0:
+    #         tournoi.score_j0 += 50.0
+    #         break
+    #     elif match.joueur0 == 1:
+    #         tournoi.score_j1 += 50.0
+    #         break
+    # print(f'tournoi.score_j1: {tournoi.score_j1}')
+    # print(f'tournoi.score_j7: {tournoi.score_j7}')
+
+    # ------------------- #
+
+    if match.joueur0 == 1:  # cas avec j dans score1
+        tournoi.score_j1 += match.score1
+    elif match.joueur0 == 2:
+        tournoi.score_j2 += match.score2
+    elif match.joueur0 == 3:
+        tournoi.score_j3 += match.score3
+    elif match.joueur0 == 4:
+        tournoi.score_j4 += match.score4
+    elif match.joueur0 == 5:
+        tournoi.score_j5 += match.score5
+    elif match.joueur0 == 6:
+        tournoi.score_j6 += match.score6
+    elif match.joueur0 == 7:
+        tournoi.score_j7 += match.score7
+
+    if match.joueur1 == 0:
+        tournoi.score_j0 += match.score0
+    elif match.joueur1 == 1:
+        tournoi.score_j1 += match.score1
+    elif match.joueur1 == 2:
+        tournoi.score_j2 += match.score2
+    elif match.joueur1 == 3:
+        tournoi.score_j3 += match.score3
+    elif match.joueur1 == 4:
+        tournoi.score_j4 += match.score4
+    elif match.joueur1 == 5:
+        tournoi.score_j5 += match.score5
+    elif match.joueur1 == 6:
+        tournoi.score_j6 += match.score6
+    elif match.joueur1 == 7:
+        tournoi.score_j7 += match.score7
+
+    if match.joueur2 == 0:
+        tournoi.score_j0 += match.score0
+    elif match.joueur2 == 1:
+        tournoi.score_j1 += match.score1
+    elif match.joueur2 == 2:
+        tournoi.score_j2 += match.score2
+    elif match.joueur2 == 3:
+        tournoi.score_j3 += match.score3
+    elif match.joueur2 == 4:
+        tournoi.score_j4 += match.score4
+    elif match.joueur2 == 5:
+        tournoi.score_j5 += match.score5
+    elif match.joueur2 == 6:
+        tournoi.score_j6 += match.score6
+    elif match.joueur2 == 7:
+        tournoi.score_j7 += match.score7
+
+    if match.joueur3 == 0:
+        tournoi.score_j0 += match.score0
+    elif match.joueur3 == 1:
+        tournoi.score_j1 += match.score1
+    elif match.joueur3 == 2:
+        tournoi.score_j2 += match.score2
+    elif match.joueur3 == 3:
+        tournoi.score_j3 += match.score3
+    elif match.joueur3 == 4:
+        tournoi.score_j4 += match.score4
+    elif match.joueur3 == 5:
+        tournoi.score_j5 += match.score5
+    elif match.joueur3 == 6:
+        tournoi.score_j6 += match.score6
+    elif match.joueur3 == 7:
+        tournoi.score_j7 += match.score7
+
+    if match.joueur4 == 0:
+        tournoi.score_j0 += match.score0
+    elif match.joueur4 == 1:
+        tournoi.score_j1 += match.score1
+    elif match.joueur4 == 2:
+        tournoi.score_j2 += match.score2
+    elif match.joueur4 == 3:
+        tournoi.score_j3 += match.score3
+    elif match.joueur4 == 4:
+        tournoi.score_j4 += match.score4
+    elif match.joueur4 == 5:
+        tournoi.score_j5 += match.score5
+    elif match.joueur4 == 6:
+        tournoi.score_j6 += match.score6
+    elif match.joueur4 == 7:
+        tournoi.score_j7 += match.score7
+
+    if match.joueur5 == 0:
+        tournoi.score_j0 += match.score0
+    elif match.joueur5 == 1:
+        tournoi.score_j1 += match.score1
+    elif match.joueur5 == 2:
+        tournoi.score_j2 += match.score2
+    elif match.joueur5 == 3:
+        tournoi.score_j3 += match.score3
+    elif match.joueur5 == 4:
+        tournoi.score_j4 += match.score4
+    elif match.joueur5 == 5:
+        tournoi.score_j5 += match.score5
+    elif match.joueur5 == 6:
+        tournoi.score_j6 += match.score6
+    elif match.joueur5 == 7:
+        tournoi.score_j7 += match.score7
+
+    if match.joueur6 == 0:
+        tournoi.score_j0 += match.score0
+    elif match.joueur6 == 1:
+        tournoi.score_j1 += match.score1
+    elif match.joueur6 == 2:
+        tournoi.score_j2 += match.score2
+    elif match.joueur6 == 3:
+        tournoi.score_j3 += match.score3
+    elif match.joueur6 == 4:
+        tournoi.score_j4 += match.score4
+    elif match.joueur6 == 5:
+        tournoi.score_j5 += match.score5
+    elif match.joueur6 == 6:
+        tournoi.score_j6 += match.score6
+    elif match.joueur6 == 7:
+        tournoi.score_j7 += match.score7
+
+    if match.joueur7 == 0:
+        tournoi.score_j0 += match.score0
+    elif match.joueur7 == 1:
+        tournoi.score_j1 += match.score1
+    elif match.joueur7 == 2:
+        tournoi.score_j2 += match.score2
+    elif match.joueur7 == 3:
+        tournoi.score_j3 += match.score3
+    elif match.joueur7 == 4:
+        tournoi.score_j4 += match.score4
+    elif match.joueur7 == 5:
+        tournoi.score_j5 += match.score5
+    elif match.joueur7 == 6:
+        tournoi.score_j6 += match.score6
+    elif match.joueur7 == 7:
+        tournoi.score_j7 += match.score7
 
 def quitter():
     """ Quitter l'application """
