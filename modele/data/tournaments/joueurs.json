@@ -41,42 +41,42 @@
   ],
   "4": [
     {
-      "date_de_naissance": "Testa",
+      "date_de_naissance": "05/06/1977",
       "deja_joue": null,
-      "id": "Testb",
-      "nom": "Testc",
-      "prenom": "Testd",
-      "sexe": "Teste"
+      "id": "AB12340",
+      "nom": "Man",
+      "prenom": "Iron",
+      "sexe": "Homme"
     }
   ],
   "5": [
     {
-      "date_de_naissance": "12",
+      "date_de_naissance": "12/03/1999",
       "deja_joue": null,
-      "id": "Testb",
-      "nom": "eee",
-      "prenom": "fff",
-      "sexe": "Teste"
+      "id": "AB12340",
+      "nom": "Angel",
+      "prenom": "Vanessa",
+      "sexe": "Femme"
     }
   ],
   "6": [
     {
-      "date_de_naissance": "14",
+      "date_de_naissance": "14/09/1952",
       "deja_joue": null,
-      "id": "Testb",
-      "nom": "Man",
+      "id": "AB12340",
+      "nom": "Woman",
       "prenom": "Wonder",
-      "sexe": "Teste"
+      "sexe": "Femme"
     }
   ],
   "7": [
     {
-      "date_de_naissance": "23",
+      "date_de_naissance": "23/08/1967",
       "deja_joue": null,
-      "id": "Testb",
-      "nom": "Bertrand",
-      "prenom": "Guillaume",
-      "sexe": "Teste"
+      "id": "AB12340",
+      "nom": "Dupond",
+      "prenom": "Jean",
+      "sexe": "Homme"
     }
   ]
 }

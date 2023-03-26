@@ -28,7 +28,7 @@ class Match:
         self.joueur6 = joueur6
         self.joueur7 = joueur7
         self.paire = tuple[(), ()]
-        self.lj_r1 = "lj_r1"  # récup depuis Tournois.json à mettre à jour !!!!!!
+        self.lj_r1 = None  # récup depuis Tournois.json à mettre à jour !!!!!!
         self.score = "score"
         self.score_r1 = None
         self.score_r2 = None
@@ -57,6 +57,38 @@ class Match:
         self.resultats_r3 = None
         self.resultats_r4 = None
         self.idtn = idtn
+        self.score_j0_r1 = 0.0
+        self.score_j1_r1 = 0.0
+        self.score_j2_r1 = 0.0
+        self.score_j3_r1 = 0.0
+        self.score_j4_r1 = 0.0
+        self.score_j5_r1 = 0.0
+        self.score_j6_r1 = 0.0
+        self.score_j7_r1 = 0.0
+        self.score_j0_r2 = 0.0
+        self.score_j1_r2 = 0.0
+        self.score_j2_r2 = 0.0
+        self.score_j3_r2 = 0.0
+        self.score_j4_r2 = 0.0
+        self.score_j5_r2 = 0.0
+        self.score_j6_r2 = 0.0
+        self.score_j7_r2 = 0.0
+        self.score_j0_r3 = 0.0
+        self.score_j1_r3 = 0.0
+        self.score_j2_r3 = 0.0
+        self.score_j3_r3 = 0.0
+        self.score_j4_r3 = 0.0
+        self.score_j5_r3 = 0.0
+        self.score_j6_r3 = 0.0
+        self.score_j7_r3 = 0.0
+        self.score_j0_r4 = 0.0
+        self.score_j1_r4 = 0.0
+        self.score_j2_r4 = 0.0
+        self.score_j3_r4 = 0.0
+        self.score_j4_r4 = 0.0
+        self.score_j5_r4 = 0.0
+        self.score_j6_r4 = 0.0
+        self.score_j7_r4 = 0.0
 
 
 match = Match(idtn=int, num_round=int, joueur0="nc", joueur1="nc")

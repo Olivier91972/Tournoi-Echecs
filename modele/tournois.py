@@ -19,10 +19,10 @@ class Tournoi:
         self.idn = idn
         self.joueur = "joueur"
         self.liste_joueurs = None
-        self.lj_r1 = "lj_r1"  #liste joueurs Round 1 (puis est aléatoire ensuite [arr])
-        self.lj_r2 = "lj_r2"  # doit etre triée par points !
-        self.lj_r3 = "lj_r3"
-        self.lj_r4 = "lj_r4"
+        self.lj_r1 = None  #liste joueurs Round 1 (puis est aléatoire ensuite [arr])
+        self.lj_r2 = None  # doit etre triée par points !
+        self.lj_r3 = None
+        self.lj_r4 = None
         self.matchs_r1 = None
         self.matchs_r2 = None
         self.matchs_r3 = None
@@ -56,6 +56,9 @@ class Tournoi:
         self.score_m3_r4 = None
         self.score_m4_r4 = None
         self.idtn = idtn
+
+
+
 
 
 tournoi = Tournoi(nom_tournoi="nc", lieu="nc", date_debut="nc", idn="nc", nb_tours=4, idtn=0)

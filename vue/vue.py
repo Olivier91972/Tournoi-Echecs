@@ -1,27 +1,15 @@
 """La vue présente les informations du modèle à l’utilisateur.
 Elle sert d’interface visuelle et/ou sonore pour l’utilisateur"""
-import os
-import json
-import pickle
+
 import random
-import sys
 import time
 
-import numpy as np
-import timg
 from tabulate import tabulate
-from texttable import Texttable
-
-# from pathlib import Path
-
-from rich.console import Console
 
 from datetime import datetime
 
-from modele.joueurs import Joueur, joueur
-from tournois import Tournoi, tournoi
-from tours import Tours, tour1, tour2, tour3, tour4
-from matchs import match, Match
+from tournois import tournoi
+from tours import tour1, tour2, tour3, tour4
 
 
 def date_heure_now():
@@ -58,12 +46,12 @@ class Vue:
               "------------------------------------------------------------")
 
         print("\n----------[MENU]----------")
-        print("Choisir une option")
+        print("Choisir une option:")
         print('- Créer (Nouveau tournoi)')
         print('- Ajouter (Ajouter un joueur)')
         print('- Tournoi (Démarrer un tournoi)')
-        print('- Round (Démarrer un round)')
-        print('- Match (Démarrer un match)')
+        # print('- Round (Démarrer un round)')
+        # print('- Match (Démarrer un match)')
         print('- Classement')
         print('- Stat1 (liste des joueurs par ordre alphabétique)')
         print('- Stat2 (liste de tous les tournois)')
@@ -175,8 +163,10 @@ class Vue:
     @staticmethod
     def prompt_id_tournoi():
         """Demande l'id du tournoi à exécuter"""
+
         id_tournoi = int(input("\n----------[Tournoi]----------\n"
                                "Sélectionnez l'id du tournoi:\n"))
+
         return id_tournoi
 
     @staticmethod
@@ -304,9 +294,10 @@ class Vue:
     def afficher_gagnant(classement):
         """Affiche le gagnant du tournoi"""
         print(classement)
-        gagnant = f'classement{classement[1]} avec {classement[4]} points !'
+        gagnant = f'classement{classement[0][1]} avec {classement[0][4]} points !'
 
-        print(f"Le gagnant du tournoi est {gagnant}")
+        print("\n--------------------[Gagnant]--------------------\n")
+        print(f"Le gagnant du tournoi est {gagnant}\n")
 
     def generer_paires(self, array):
         self.infos = "infos"
