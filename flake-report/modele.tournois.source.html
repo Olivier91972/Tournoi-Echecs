@@ -50,7 +50,7 @@
                class="code sev- "><tt><i>8</i> &nbsp;</tt>
             </div>
             <div id="l9"
-               class="code sev- "><tt><i>9</i>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom_tournoi</span><span class="p">,</span> <span class="n">lieu</span><span class="p">,</span> <span class="n">date_debut</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">idn</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nb_tours</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">idtn</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>9</i>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom_tournoi</span><span class="p">,</span> <span class="n">lieu</span><span class="p">,</span> <span class="n">date_debut</span><span class="p">,</span> <span class="n">idn</span><span class="o">=</span><span class="s2">&quot;nc&quot;</span><span class="p">,</span> <span class="n">nb_tours</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">idtn</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span></tt>
             </div>
             <div id="l10"
                class="code sev- "><tt><i>10</i>         <span class="n">date_fin</span> <span class="o">=</span> <span class="kc">None</span></tt>
@@ -98,16 +98,16 @@
                      </span>
                      Inline comment should start with '# '</li>
                
-               </ul><tt><i>22</i>         <span class="bp">self</span><span class="o">.</span><span class="n">lj_r1</span> <span class="o">=</span> <span class="s2">&quot;lj_r1&quot;</span>  <span class="c1">#liste joueurs Round 1 (puis est aléatoire ensuite [arr])</span></tt>
+               </ul><tt><i>22</i>         <span class="bp">self</span><span class="o">.</span><span class="n">lj_r1</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#liste joueurs Round 1 (puis est aléatoire ensuite [arr])</span></tt>
             </div>
             <div id="l23"
-               class="code sev- "><tt><i>23</i>         <span class="bp">self</span><span class="o">.</span><span class="n">lj_r2</span> <span class="o">=</span> <span class="s2">&quot;lj_r2&quot;</span>  <span class="c1"># doit etre triée par points !</span></tt>
+               class="code sev- "><tt><i>23</i>         <span class="bp">self</span><span class="o">.</span><span class="n">lj_r2</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># doit etre triée par points !</span></tt>
             </div>
             <div id="l24"
-               class="code sev- "><tt><i>24</i>         <span class="bp">self</span><span class="o">.</span><span class="n">lj_r3</span> <span class="o">=</span> <span class="s2">&quot;lj_r3&quot;</span></tt>
+               class="code sev- "><tt><i>24</i>         <span class="bp">self</span><span class="o">.</span><span class="n">lj_r3</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l25"
-               class="code sev- "><tt><i>25</i>         <span class="bp">self</span><span class="o">.</span><span class="n">lj_r4</span> <span class="o">=</span> <span class="s2">&quot;lj_r4&quot;</span></tt>
+               class="code sev- "><tt><i>25</i>         <span class="bp">self</span><span class="o">.</span><span class="n">lj_r4</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l26"
                class="code sev- "><tt><i>26</i>         <span class="bp">self</span><span class="o">.</span><span class="n">matchs_r1</span> <span class="o">=</span> <span class="kc">None</span></tt>
@@ -122,28 +122,28 @@
                class="code sev- "><tt><i>29</i>         <span class="bp">self</span><span class="o">.</span><span class="n">matchs_r4</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l30"
-               class="code sev- "><tt><i>30</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j1</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               class="code sev- "><tt><i>30</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j0</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l31"
-               class="code sev- "><tt><i>31</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j2</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               class="code sev- "><tt><i>31</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j1</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l32"
-               class="code sev- "><tt><i>32</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j3</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               class="code sev- "><tt><i>32</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j2</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l33"
-               class="code sev- "><tt><i>33</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j4</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               class="code sev- "><tt><i>33</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j3</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l34"
-               class="code sev- "><tt><i>34</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j5</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               class="code sev- "><tt><i>34</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j4</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l35"
-               class="code sev- "><tt><i>35</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j6</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               class="code sev- "><tt><i>35</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j5</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l36"
-               class="code sev- "><tt><i>36</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j7</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               class="code sev- "><tt><i>36</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j6</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l37"
-               class="code sev- "><tt><i>37</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j8</span> <span class="o">=</span> <span class="kc">None</span></tt>
+               class="code sev- "><tt><i>37</i>         <span class="bp">self</span><span class="o">.</span><span class="n">score_j7</span> <span class="o">=</span> <span class="kc">None</span></tt>
             </div>
             <div id="l38"
                class="code sev- "><tt><i>38</i>         <span class="bp">self</span><span class="o">.</span><span class="n">couleurs_r1</span> <span class="o">=</span> <span class="kc">None</span></tt>
@@ -215,27 +215,15 @@
                class="code sev- "><tt><i>60</i> &nbsp;</tt>
             </div>
             <div id="l61"
-               class="code sev- "><tt><i>61</i> <span class="n">tournoi</span> <span class="o">=</span> <span class="n">Tournoi</span><span class="p">(</span><span class="n">nom_tournoi</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">lieu</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">date_debut</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">idn</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nb_tours</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">idtn</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>61</i> &nbsp;</tt>
             </div>
             <div id="l62"
-               class="code sev- "><tt><i>62</i> <span class="c1"># print(tournoi.nom_tournoi, tournoi.lieu)</span></tt>
+               class="code sev- "><tt><i>62</i> &nbsp;</tt>
             </div>
             <div id="l63"
                class="code sev- "><tt><i>63</i> &nbsp;</tt>
             </div>
             <div id="l64"
-               class="code sev- "><tt><i>64</i> &nbsp;</tt>
-            </div>
-            <div id="l65"
-               class="code sev- "><tt><i>65</i> &nbsp;</tt>
-            </div>
-            <div id="l66"
-               class="code sev- "><tt><i>66</i> &nbsp;</tt>
-            </div>
-            <div id="l67"
-               class="code sev- "><tt><i>67</i> &nbsp;</tt>
-            </div>
-            <div id="l68"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -245,15 +233,15 @@
                      </span>
                      Too many blank lines (5)</li>
                
-                  <li>
-                     <span class="count sev-2">
-                        E265
-                     </span>
-                     Block comment should start with '# '</li>
-               
-               </ul><tt><i>68</i> <span class="c1">#print(infos_tournoi())</span></tt>
+               </ul><tt><i>64</i> <span class="n">tournoi</span> <span class="o">=</span> <span class="n">Tournoi</span><span class="p">(</span><span class="n">nom_tournoi</span><span class="o">=</span><span class="s2">&quot;nc&quot;</span><span class="p">,</span> <span class="n">lieu</span><span class="o">=</span><span class="s2">&quot;nc&quot;</span><span class="p">,</span> <span class="n">date_debut</span><span class="o">=</span><span class="s2">&quot;nc&quot;</span><span class="p">,</span> <span class="n">idn</span><span class="o">=</span><span class="s2">&quot;nc&quot;</span><span class="p">,</span> <span class="n">nb_tours</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">idtn</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></tt>
             </div>
-            <div id="l69"
+            <div id="l65"
+               class="code sev- "><tt><i>65</i> <span class="c1"># print(tournoi.nom_tournoi, tournoi.lieu)</span></tt>
+            </div>
+            <div id="l66"
+               class="code sev- "><tt><i>66</i> &nbsp;</tt>
+            </div>
+            <div id="l67"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -263,7 +251,19 @@
                      </span>
                      Block comment should start with '# '</li>
                
-               </ul><tt><i>69</i> <span class="c1">#afficher = Vue()</span></tt>
+               </ul><tt><i>67</i> <span class="c1">#print(infos_tournoi())</span></tt>
+            </div>
+            <div id="l68"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E265
+                     </span>
+                     Block comment should start with '# '</li>
+               
+               </ul><tt><i>68</i> <span class="c1">#afficher = Vue()</span></tt>
             </div>
             
          </div>
