@@ -62,8 +62,8 @@ Installation des packages avec pip : \
 `pip install -r requirements.txt`
 
 Lancez le script : \
-`python main.py` sous Unix \
-`py main.py` sous Windows \
+`python controleur.py` sous Unix \
+`py controleur.py` sous Windows \
 Si votre interpréteur est invalide pour le projet : 
 `rm -rf env` pour supprimer les données de l'environnement virtuel \
 Créez et activez depuis l'interface graphique de votre IDE python
@@ -73,8 +73,7 @@ La bonne exécution du script, ainsi que l'intégrité des données récupérée
 dépendront de la stabilité de votre connexion internet.*** 
 
 # Comment jouer:
-Depuis le Menu principal : 
-Tapez :
+Depuis le Menu principal tapez :
 - "Créer" pour créer un nouveau tournoi
 - "Ajouter" pour ajouter un nouveau joueur
 - "Tournoi" pour démarrer un tournoi
