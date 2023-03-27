@@ -10,10 +10,10 @@
       "dateh_deb_r1": null,
       "dateh_deb_r2": null,
       "dateh_deb_r3": null,
-      "dateh_deb_r4": "26-03-2023, 00:46:32",
+      "dateh_deb_r4": null,
       "dateh_fin_r1": null,
       "dateh_fin_r2": null,
-      "dateh_fin_r3": "26-03-2023, 00:46:32",
+      "dateh_fin_r3": null,
       "dateh_fin_r4": null,
       "description": null,
       "idtn": 0,
@@ -28,91 +28,62 @@
       "liste_dj7": null,
       "liste_joueurs": null,
       "liste_tours": "liste_tours",
-      "lj_r1": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
+      "lj_r1": null,
       "lj_r2": null,
       "lj_r3": null,
       "lj_r4": null,
-      "matchs_r1": "[(4, 5), (2, 0), (3, 7), (1, 6)]",
+      "matchs_r1": null,
       "matchs_r2": null,
       "matchs_r3": null,
       "matchs_r4": null,
       "nb_tours": 4,
       "nom_tournoi": "PyChess94",
-      "num_tour_actuel": 4,
+      "num_tour_actuel": 1,
+      "paire1_r1": null,
+      "paire1_r2": null,
+      "paire1_r3": null,
+      "paire1_r4": null,
+      "paire2_r1": null,
+      "paire2_r2": null,
+      "paire2_r3": null,
+      "paire2_r4": null,
+      "paire3_r1": null,
+      "paire3_r2": null,
+      "paire3_r3": null,
+      "paire3_r4": null,
+      "paire4_r1": null,
+      "paire4_r2": null,
+      "paire4_r3": null,
+      "paire4_r4": null,
       "score0": 0.0,
-      "score1": 1.0,
-      "score2": 1.0,
+      "score1": 0.0,
+      "score2": 0.0,
       "score3": 0.0,
-      "score4": 0.5,
-      "score5": 0.5,
+      "score4": 0.0,
+      "score5": 0.0,
       "score6": 0.0,
-      "score7": 1.0,
-      "score_j0": 34.5,
-      "score_j1": 19.0,
-      "score_j2": 41.0,
-      "score_j3": 41.0,
-      "score_j4": 19.0,
-      "score_j5": 29.0,
-      "score_j6": 31.0,
-      "score_j7": 25.5,
-      "score_m1_r1": [
-        [
-          4,
-          0.0
-        ],
-        [
-          5,
-          1.0
-        ]
-      ],
+      "score7": 0.0,
+      "score_j0": 0.0,
+      "score_j1": 0.0,
+      "score_j2": 0.0,
+      "score_j3": 0.0,
+      "score_j4": 0.0,
+      "score_j5": 0.0,
+      "score_j6": 0.0,
+      "score_j7": 0.0,
+      "score_m1_r1": null,
       "score_m1_r2": null,
       "score_m1_r3": null,
       "score_m1_r4": null,
-      "score_m2_r1": [
-        [
-          2,
-          1.0
-        ],
-        [
-          0,
-          0.0
-        ]
-      ],
+      "score_m2_r1": null,
       "score_m2_r2": null,
       "score_m2_r3": null,
       "score_m2_r4": null,
-      "score_m3_r1": [
-        [
-          3,
-          0.5
-        ],
-        [
-          7,
-          0.5
-        ]
-      ],
+      "score_m3_r1": null,
       "score_m3_r2": null,
       "score_m3_r3": null,
       "score_m3_r4": null,
-      "score_m4_r1": [
-        [
-          1,
-          0.0
-        ],
-        [
-          6,
-          1.0
-        ]
-      ],
+      "score_m4_r1": null,
       "score_m4_r2": null,
       "score_m4_r3": null,
       "score_m4_r4": null
@@ -120,18 +91,18 @@
   ],
   "1": [
     {
-      "couleurs_r1": "[['2,noir'], ['7,blanc'], ['4,noir'], ['3,blanc'], ['0,noir'], ['1,blanc'], ['5,noir'], ['6,blanc']]",
-      "couleurs_r2": "[['2,noir'], ['6,blanc'], ['4,noir'], ['3,blanc'], ['0,noir'], ['1,blanc'], ['5,noir'], ['7,blanc']]",
+      "couleurs_r1": "[['0,noir'], ['7,blanc'], ['2,noir'], ['3,blanc'], ['6,noir'], ['5,blanc'], ['4,noir'], ['1,blanc']]",
+      "couleurs_r2": "[['0,noir'], ['2,blanc'], ['5,noir'], ['4,blanc'], ['3,noir'], ['7,blanc'], ['1,noir'], ['6,blanc']]",
       "couleurs_r3": null,
       "couleurs_r4": null,
-      "date_debut": "nc",
+      "date_debut": "28/03/2023",
       "date_fin": "nc",
-      "dateh_deb_r1": "26-03-2023, 01:56:38",
-      "dateh_deb_r2": "26-03-2023, 01:28:07",
-      "dateh_deb_r3": "26-03-2023, 01:28:27",
+      "dateh_deb_r1": "27-03-2023, 15:54:20",
+      "dateh_deb_r2": "27-03-2023, 15:55:02",
+      "dateh_deb_r3": null,
       "dateh_deb_r4": null,
-      "dateh_fin_r1": "26-03-2023, 01:28:07",
-      "dateh_fin_r2": "26-03-2023, 01:28:27",
+      "dateh_fin_r1": "27-03-2023, 15:55:02",
+      "dateh_fin_r2": null,
       "dateh_fin_r3": null,
       "dateh_fin_r4": null,
       "description": "nc",
@@ -167,61 +138,45 @@
         7
       ],
       "lj_r2": [
-        "2",
-        "7",
-        "5",
-        "4",
-        "3",
         "0",
+        "5",
+        "2",
+        "3",
+        "4",
         "1",
+        "7",
         "6"
       ],
       "lj_r3": [
+        "0",
+        "7",
+        "5",
+        "4",
+        "1",
+        "6",
         "2",
+        "3"
+      ],
+      "lj_r4": null,
+      "matchs_r1": "[(0, 7), (2, 3), (6, 5), (4, 1)]",
+      "matchs_r2": [
+        "0",
+        "2",
+        "5",
         "4",
         "3",
         "7",
-        "6",
-        "0",
         "1",
-        "5"
-      ],
-      "lj_r4": null,
-      "matchs_r1": "[(2, 7), (4, 3), (0, 1), (5, 6)]",
-      "matchs_r2": [
-        "2",
-        "6",
-        "4",
-        "3",
-        "0",
-        "1",
-        "5",
-        7
+        6
       ],
       "matchs_r3": null,
       "matchs_r4": null,
       "nb_tours": 4,
       "nom_tournoi": "PyChess75",
-      "num_tour_actuel": 2,
-      "score0": 1.0,
-      "score1": 0.0,
-      "score2": 0.5,
-      "score3": 0.5,
-      "score4": 0.0,
-      "score5": 1.0,
-      "score6": 0.0,
-      "score7": 1.0,
-      "score_j0": 0.0,
-      "score_j1": 0.0,
-      "score_j2": 0.0,
-      "score_j3": 0.0,
-      "score_j4": 0.0,
-      "score_j5": 0.0,
-      "score_j6": 0.0,
-      "score_j7": 0.0,
-      "score_m1_r1": [
+      "num_tour_actuel": 3,
+      "paire1_r1": [
         [
-          2,
+          0,
           1.0
         ],
         [
@@ -229,12 +184,21 @@
           0.0
         ]
       ],
-      "score_m1_r2": null,
-      "score_m1_r3": null,
-      "score_m1_r4": null,
-      "score_m2_r1": [
+      "paire1_r2": [
         [
-          4,
+          0,
+          1.0
+        ],
+        [
+          2,
+          0.0
+        ]
+      ],
+      "paire1_r3": null,
+      "paire1_r4": null,
+      "paire2_r1": [
+        [
+          2,
           0.5
         ],
         [
@@ -242,33 +206,164 @@
           0.5
         ]
       ],
-      "score_m2_r2": null,
+      "paire2_r2": [
+        [
+          5,
+          0.5
+        ],
+        [
+          4,
+          0.5
+        ]
+      ],
+      "paire2_r3": null,
+      "paire2_r4": null,
+      "paire3_r1": [
+        [
+          6,
+          0.0
+        ],
+        [
+          5,
+          1.0
+        ]
+      ],
+      "paire3_r2": [
+        [
+          3,
+          0.0
+        ],
+        [
+          7,
+          1.0
+        ]
+      ],
+      "paire3_r3": null,
+      "paire3_r4": null,
+      "paire4_r1": [
+        [
+          4,
+          0.5
+        ],
+        [
+          1,
+          0.5
+        ]
+      ],
+      "paire4_r2": [
+        [
+          1,
+          0.5
+        ],
+        [
+          6,
+          0.5
+        ]
+      ],
+      "paire4_r3": null,
+      "paire4_r4": null,
+      "score0": 1.0,
+      "score1": 0.0,
+      "score2": 0.5,
+      "score3": 0.5,
+      "score4": 0.0,
+      "score5": 1.0,
+      "score6": 0.5,
+      "score7": 0.5,
+      "score_j0": 2.0,
+      "score_j1": 0.0,
+      "score_j2": 1.0,
+      "score_j3": 1.0,
+      "score_j4": 0.0,
+      "score_j5": 2.0,
+      "score_j6": 1.0,
+      "score_j7": 1.0,
+      "score_m1_r1": [
+        [
+          0,
+          1.0
+        ],
+        [
+          7,
+          0.0
+        ]
+      ],
+      "score_m1_r2": [
+        [
+          0,
+          1.0
+        ],
+        [
+          2,
+          0.0
+        ]
+      ],
+      "score_m1_r3": null,
+      "score_m1_r4": null,
+      "score_m2_r1": [
+        [
+          2,
+          0.5
+        ],
+        [
+          3,
+          0.5
+        ]
+      ],
+      "score_m2_r2": [
+        [
+          5,
+          0.5
+        ],
+        [
+          4,
+          0.5
+        ]
+      ],
       "score_m2_r3": null,
       "score_m2_r4": null,
       "score_m3_r1": [
         [
-          0,
+          6,
           0.0
         ],
         [
-          1,
+          5,
           1.0
         ]
       ],
-      "score_m3_r2": null,
+      "score_m3_r2": [
+        [
+          3,
+          0.0
+        ],
+        [
+          7,
+          1.0
+        ]
+      ],
       "score_m3_r3": null,
       "score_m3_r4": null,
       "score_m4_r1": [
         [
-          5,
-          0.0
+          4,
+          0.5
+        ],
+        [
+          1,
+          0.5
+        ]
+      ],
+      "score_m4_r2": [
+        [
+          1,
+          0.5
         ],
         [
           6,
-          1.0
+          0.5
         ]
       ],
-      "score_m4_r2": null,
       "score_m4_r3": null,
       "score_m4_r4": null
     }
@@ -340,6 +435,22 @@
       "nb_tours": 4,
       "nom_tournoi": "PyEssonne91",
       "num_tour_actuel": 2,
+      "paire1_r1": null,
+      "paire1_r2": null,
+      "paire1_r3": null,
+      "paire1_r4": null,
+      "paire2_r1": null,
+      "paire2_r2": null,
+      "paire2_r3": null,
+      "paire2_r4": null,
+      "paire3_r1": null,
+      "paire3_r2": null,
+      "paire3_r3": null,
+      "paire3_r4": null,
+      "paire4_r1": null,
+      "paire4_r2": null,
+      "paire4_r3": null,
+      "paire4_r4": null,
       "score1": 0.5,
       "score2": 0.5,
       "score3": 1.0,
@@ -366,6 +477,114 @@
           0.5
         ]
       ],
+      "score_m1_r2": null,
+      "score_m1_r3": null,
+      "score_m1_r4": null,
+      "score_m2_r1": null,
+      "score_m2_r2": null,
+      "score_m2_r3": null,
+      "score_m2_r4": null,
+      "score_m3_r1": null,
+      "score_m3_r2": null,
+      "score_m3_r3": null,
+      "score_m3_r4": null,
+      "score_m4_r1": null,
+      "score_m4_r2": null,
+      "score_m4_r3": null,
+      "score_m4_r4": null
+    }
+  ],
+  "3": [
+    {
+      "couleurs_r1": null,
+      "couleurs_r2": null,
+      "couleurs_r3": null,
+      "couleurs_r4": null,
+      "date_debut": "nc",
+      "date_fin": "nc",
+      "dateh_deb_r1": null,
+      "dateh_deb_r2": null,
+      "dateh_deb_r3": null,
+      "dateh_deb_r4": null,
+      "dateh_fin_r1": null,
+      "dateh_fin_r2": null,
+      "dateh_fin_r3": null,
+      "dateh_fin_r4": null,
+      "description": null,
+      "idtn": 3,
+      "lieu": "nc",
+      "liste_dj0": null,
+      "liste_dj1": null,
+      "liste_dj2": null,
+      "liste_dj3": null,
+      "liste_dj4": null,
+      "liste_dj5": null,
+      "liste_dj6": null,
+      "liste_dj7": null,
+      "liste_joueurs": null,
+      "liste_tours": "liste_tours",
+      "lj_r1": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "lj_r2": [
+        "6",
+        "3",
+        "7",
+        "0",
+        "2",
+        "1",
+        "4",
+        "5"
+      ],
+      "lj_r3": "nc",
+      "lj_r4": "nc",
+      "matchs_r1": null,
+      "matchs_r2": null,
+      "matchs_r3": null,
+      "matchs_r4": null,
+      "nb_tours": 4,
+      "nom_tournoi": "nc",
+      "num_tour_actuel": "num_tour_actuel",
+      "paire1_r1": null,
+      "paire1_r2": null,
+      "paire1_r3": null,
+      "paire1_r4": null,
+      "paire2_r1": null,
+      "paire2_r2": null,
+      "paire2_r3": null,
+      "paire2_r4": null,
+      "paire3_r1": null,
+      "paire3_r2": null,
+      "paire3_r3": null,
+      "paire3_r4": null,
+      "paire4_r1": null,
+      "paire4_r2": null,
+      "paire4_r3": null,
+      "paire4_r4": null,
+      "score0": null,
+      "score1": null,
+      "score2": null,
+      "score3": null,
+      "score4": null,
+      "score5": null,
+      "score6": null,
+      "score7": null,
+      "score_j0": null,
+      "score_j1": null,
+      "score_j2": null,
+      "score_j3": null,
+      "score_j4": null,
+      "score_j5": null,
+      "score_j6": null,
+      "score_j7": null,
+      "score_m1_r1": null,
       "score_m1_r2": null,
       "score_m1_r3": null,
       "score_m1_r4": null,

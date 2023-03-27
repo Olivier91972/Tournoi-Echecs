@@ -185,7 +185,7 @@ class Controleur:
             dd = tournoi.date_debut
             df = tournoi.date_fin
             liste_inp.append([str(nt)] + [str(dd)] + [str(df)])
-            self.vue.afficher_stat3(input_num_t, liste_inp)
+            self.vue.afficher_stat3(liste_inp)
 
         time.sleep(2)
 
@@ -340,6 +340,7 @@ class Controleur:
             tournoi.idtn = id_tournoi
         else:
             tournoi.idtn = 1  # Par défaut
+            id_tournoi = 1  # Par défaut
         tournoi.nom_tournoi = datatournois[f'{id_tournoi}'][0]["nom_tournoi"]
         try:
             tournoi.nom_tournoi = tournoi.nom_tournoi.encode("latin1").decode("utf-8")
@@ -427,6 +428,12 @@ class Controleur:
             datatournois = json.load(f)
 
         self.serialiser_obj_tournois()
+        id_tournoi = 1  # Par défaut
+        tour1.dateh_deb = datatournois[f'{id_tournoi}'][0]["dateh_deb_r1"]
+        tour1.dateh_fin = datatournois[f'{id_tournoi}'][0]["dateh_fin_r1"]
+        tour2.dateh_deb = datatournois[f'{id_tournoi}'][0]["dateh_deb_r2"]
+        tour2.dateh_fin = datatournois[f'{id_tournoi}'][0]["dateh_fin_r2"]
+
         tournoi.num_tour_actuel = 2
         self.vue.afficher_creer_tour2()
         tour1.dateh_fin = tour1.fin()  # Termine en auto le précédent Round
@@ -441,8 +448,20 @@ class Controleur:
         self.infos = "infos"  # juste pour enlever erreur creation méthode statique !
         with open("../modele/data/tournaments/tournois.json", "r") as f:
             datatournois = json.load(f)
+            # Demander l'id du tournoi
+            # id_tournoi = self.vue.prompt_id_tournoi()
+            # if id_tournoi <= len(datatournois):
+            #     tournoi.idtn = id_tournoi
+            # else:
+            #     tournoi.idtn = 3  # Par défaut
 
         self.serialiser_obj_tournois()
+        id_tournoi = 1  # Par défaut
+        tour2.dateh_deb = datatournois[f'{id_tournoi}'][0]["dateh_deb_r2"]
+        tour2.dateh_fin = datatournois[f'{id_tournoi}'][0]["dateh_fin_r2"]
+        tour3.dateh_deb = datatournois[f'{id_tournoi}'][0]["dateh_deb_r3"]
+        tour3.dateh_fin = datatournois[f'{id_tournoi}'][0]["dateh_fin_r3"]
+
         tournoi.num_tour_actuel = 3
         self.vue.afficher_creer_tour3()
         tour2.dateh_fin = tour2.fin()  # Termine en auto le précédent Round
@@ -459,6 +478,11 @@ class Controleur:
             datatournois = json.load(f)
 
         self.serialiser_obj_tournois()
+        id_tournoi = 1  # Par défaut
+        tour3.dateh_deb = datatournois[f'{id_tournoi}'][0]["dateh_deb_r3"]
+        tour3.dateh_fin = datatournois[f'{id_tournoi}'][0]["dateh_fin_r3"]
+        tour4.dateh_deb = datatournois[f'{id_tournoi}'][0]["dateh_deb_r4"]
+        tour4.dateh_fin = datatournois[f'{id_tournoi}'][0]["dateh_fin_r4"]
         tournoi.num_tour_actuel = 4
         self.vue.afficher_creer_tour4()
         tour3.dateh_fin = tour3.fin()  # Termine en auto le précédent Round
@@ -560,7 +584,7 @@ class Controleur:
 
                     liste_num = []
                     for num in arr:
-                        #print(num)
+                        # print(num)
                         liste_num.append(num)
                     liste_num_f = str(liste_num).replace("[]", "()")
                     print(f'Enregistrement sur le Round{tournoi.num_tour_actuel}')
@@ -710,20 +734,20 @@ class Controleur:
                         liste_dj6.append(liste_p[3][1])
                         liste_dj7.append(liste_p[3][0])
 
-                        print(liste_dj0)
-                        print(liste_dj1)
-                        print(liste_dj2)
-                        print(liste_dj3)
-                        print(liste_dj4)
-                        print(liste_dj5)
-                        print(liste_dj6)
-                        print(liste_dj7)
+                        # print(liste_dj0)
+                        # print(liste_dj1)
+                        # print(liste_dj2)
+                        # print(liste_dj3)
+                        # print(liste_dj4)
+                        # print(liste_dj5)
+                        # print(liste_dj6)
+                        # print(liste_dj7)
 
                         # liste déja joué par joueurs:
 
                         update_tournoi(datatournois)
                         self.serialiser_obj_tournois()
-                        print(f'tournoi.lj_r2 {tournoi.lj_r2}')
+                        # print(f'tournoi.lj_r2 {tournoi.lj_r2}')
 
                         if num_round == 2:
                             lj_r2_t2 = tournoi.lj_r2
@@ -740,7 +764,7 @@ class Controleur:
                             nextdj6 = list(map(int, liste_dj6))
                             nextdj6 = nextdj6[0]
                             print(f'nextdj6: {nextdj6}')
-                            print(f'tournoi.lj_r2 {tournoi.lj_r2}')
+                            # print(f'tournoi.lj_r2 {tournoi.lj_r2}')
 
                         elif num_round == 3:
                             lj_r3_t2 = tournoi.lj_r3
@@ -780,9 +804,9 @@ class Controleur:
                         self.serialiser_obj_tournois()
                         # sinon tournoi.lj_r2 = []
 
-                        print(f'tournoi.lj_r2{tournoi.lj_r2}')
+                        # print(f'tournoi.lj_r2{tournoi.lj_r2}')
 
-                        #Mon algo de pairing :
+                        # Mon algo de pairing :
                         if num_round == 2:
                             liste_p_r2 = [tournoi.lj_r2[0], nextdj0, tournoi.lj_r2[1], nextdj2,
                                           tournoi.lj_r2[3], nextdj4, tournoi.lj_r2[5], nextdj6]
@@ -874,7 +898,6 @@ class Controleur:
                         else:
                             tournoi.num_tour_actuel += 1  # pour passer au auto au round suivant !
 
-
                         update_tournoi(datatournois)
 
                         with open("../modele/data/tournaments/tournois.json", "w") as f3:
@@ -909,6 +932,8 @@ class Controleur:
     def liste_matchs_auto_r1(self):
         """ Permet de lister les matchs en fonction"""
         self.infos = "infos"  # juste pour enlever erreur creation méthode statique !
+        with open("../modele/data/tournaments/joueurs.json", "r") as f:
+            datajoueurs = json.load(f)
         with open("../modele/data/tournaments/tournois.json", "r") as f:
             datatournois = json.load(f)
 
@@ -955,9 +980,23 @@ class Controleur:
 
         rep_scores = self.vue.prompt_quest_liste_match()
 
+        # print(liste_joueurs)
+
+        joueur0 = datajoueurs[f'{liste_joueurs[0]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[0]}'][0]["prenom"]
+        joueur1 = datajoueurs[f'{liste_joueurs[1]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[1]}'][0]["prenom"]
+        joueur2 = datajoueurs[f'{liste_joueurs[2]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[2]}'][0]["prenom"]
+        joueur3 = datajoueurs[f'{liste_joueurs[3]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[3]}'][0]["prenom"]
+        joueur4 = datajoueurs[f'{liste_joueurs[4]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[4]}'][0]["prenom"]
+        joueur5 = datajoueurs[f'{liste_joueurs[5]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[5]}'][0]["prenom"]
+        joueur6 = datajoueurs[f'{liste_joueurs[6]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[6]}'][0]["prenom"]
+        joueur7 = datajoueurs[f'{liste_joueurs[7]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[7]}'][0]["prenom"]
+
+        self.vue.afficher_matchs_liste_match(num_round, joueur0, joueur1, joueur2, joueur3,
+                                             joueur4, joueur5, joueur6, joueur7)
+
         # retourne 1: oui ou 0: non
         if rep_scores == 1:  # manuel
-            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match(joueur0, joueur2, joueur4, joueur6)
             match.score0 = score0
             match.score2 = score2
             match.score4 = score4
@@ -1036,10 +1075,11 @@ class Controleur:
 
         match_m1_r1 = Match(idtn, num_round, match.joueur0, match.joueur1)
         print()
-        print(f'----------[{match_m1_r1.nom_match}]----------')
+        # print(f'----------[{match_m1_r1.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur0} vs Joueur: {joueur1}')
         match.paire = tuple[(), ()]
-        match.paire1 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
-        print(match.paire1)
+        match.paire1_r1 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
+        print(match.paire1_r1)
 
         print()
         if match.score0 > match.score1:
@@ -1053,9 +1093,10 @@ class Controleur:
 
         match_m2_r1 = Match(idtn, num_round, match.joueur2, match.joueur3)
         print()
-        print(f'----------[{match_m2_r1.nom_match}]----------')
-        match.paire2 = [(match.joueur2, match.score2), (match.joueur3, match.score3)]
-        print(match.paire2)
+        # print(f'----------[{match_m2_r1.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur2} vs Joueur: {joueur3}')
+        match.paire2_r1 = [(match.joueur2, match.score2), (match.joueur3, match.score3)]
+        print(match.paire2_r1)
 
         print()
         if match.score2 > match.score3:
@@ -1069,9 +1110,10 @@ class Controleur:
 
         match_m3_r1 = Match(idtn, num_round, match.joueur4, match.joueur5)
         print()
-        print(f'----------[{match_m3_r1.nom_match}]----------')
-        match.paire3 = [(match.joueur4, match.score4), (match.joueur5, match.score5)]
-        print(match.paire3)
+        # print(f'----------[{match_m3_r1.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur4} vs Joueur: {joueur5}')
+        match.paire3_r1 = [(match.joueur4, match.score4), (match.joueur5, match.score5)]
+        print(match.paire3_r1)
 
         print()
         if match.score4 > match.score5:
@@ -1085,9 +1127,10 @@ class Controleur:
 
         match_m4_r1 = Match(idtn, num_round, match.joueur6, match.joueur7)
         print()
-        print(f'----------[{match_m4_r1.nom_match}]----------')
-        match.paire4 = [(match.joueur6, match.score6), (match.joueur7, match.score7)]
-        print(match.paire4)
+        # print(f'----------[{match_m4_r1.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur6} vs Joueur: {joueur7}')
+        match.paire4_r1 = [(match.joueur6, match.score6), (match.joueur7, match.score7)]
+        print(match.paire4_r1)
 
         print()
         if match.score6 > match.score7:
@@ -1099,10 +1142,10 @@ class Controleur:
 
         match_m4_r1.lj_r1 = datatournois[f'{idtn}'][0]["lj_r1"]
 
-        tournoi.score_m1_r1 = match.paire1  # Tuple à stocker dans datatournois !!!!!!
-        tournoi.score_m2_r1 = match.paire2
-        tournoi.score_m3_r1 = match.paire3
-        tournoi.score_m4_r1 = match.paire4
+        tournoi.score_m1_r1 = match.paire1_r1
+        tournoi.score_m2_r1 = match.paire2_r1
+        tournoi.score_m3_r1 = match.paire3_r1
+        tournoi.score_m4_r1 = match.paire4_r1
 
         time.sleep(0.8)
 
@@ -1282,7 +1325,7 @@ class Controleur:
         for x1 in joueursdict_tries:
             classement.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
             position += 1
-        print(f'classement{classement}')
+        # print(f'classement{classement}')
         self.vue.afficher_classement(num_round, classement)
 
         time.sleep(0.8)
@@ -1306,8 +1349,10 @@ class Controleur:
 
     def liste_matchs_auto_r2(self):
         """ Permet de lister les matchs en fonction"""
-        self.infos = "infos"  # juste pour enlever erreur creation méthode statique !
 
+        self.infos = "infos"  # juste pour enlever erreur creation méthode statique !
+        with open("../modele/data/tournaments/joueurs.json", "r") as f:
+            datajoueurs = json.load(f)
         with open("../modele/data/tournaments/tournois.json", "r") as f:
             datatournois = json.load(f)
 
@@ -1346,11 +1391,9 @@ class Controleur:
         match.score6 = 0.0
         match.score7 = 0.0
 
+        # print(f'tournoi.matchs_r2{tournoi.matchs_r2}')
 
-        print(f'tournoi.matchs_r2{tournoi.matchs_r2}')
-
-
-        #print(tournoi.lj_r2)
+        # print(tournoi.lj_r2)
 
         liste_joueurs = (tournoi.matchs_r2[0], tournoi.matchs_r2[1], tournoi.matchs_r2[2],
                          tournoi.matchs_r2[3], tournoi.matchs_r2[4], tournoi.matchs_r2[5],
@@ -1358,14 +1401,29 @@ class Controleur:
         liste_joueurs_int = [int(tournoi.matchs_r2[0]), int(tournoi.matchs_r2[1]), int(tournoi.matchs_r2[2]),
                              int(tournoi.matchs_r2[3]), int(tournoi.matchs_r2[4]), int(tournoi.matchs_r2[5]),
                              int(tournoi.matchs_r2[6]), int(tournoi.matchs_r2[7])]
-        # print("liste_joueurs_int:")
-        # print(sorted(liste_joueurs_int, reverse=False))   attention si oui probl dejajoué
+
+        for i in liste_joueurs_int:
+            setattr(match, "joueur" + str(i), liste_joueurs_int[i])
 
         rep_scores = self.vue.prompt_quest_liste_match()
 
+        # print(liste_joueurs)
+
+        joueur0 = datajoueurs[f'{liste_joueurs[0]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[0]}'][0]["prenom"]
+        joueur1 = datajoueurs[f'{liste_joueurs[1]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[1]}'][0]["prenom"]
+        joueur2 = datajoueurs[f'{liste_joueurs[2]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[2]}'][0]["prenom"]
+        joueur3 = datajoueurs[f'{liste_joueurs[3]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[3]}'][0]["prenom"]
+        joueur4 = datajoueurs[f'{liste_joueurs[4]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[4]}'][0]["prenom"]
+        joueur5 = datajoueurs[f'{liste_joueurs[5]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[5]}'][0]["prenom"]
+        joueur6 = datajoueurs[f'{liste_joueurs[6]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[6]}'][0]["prenom"]
+        joueur7 = datajoueurs[f'{liste_joueurs[7]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[7]}'][0]["prenom"]
+
+        self.vue.afficher_matchs_liste_match(num_round, joueur0, joueur1, joueur2, joueur3,
+                                             joueur4, joueur5, joueur6, joueur7)
+
         # retourne 1: oui ou 2: non
         if rep_scores == 1:  # manuel
-            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match(joueur0, joueur2, joueur4, joueur6)
             match.score0 = score0
             match.score2 = score2
             match.score4 = score4
@@ -1442,14 +1500,15 @@ class Controleur:
         else:
             self.liste_matchs_auto_r2()
 
-        print(f'tournoi.score_j0: {tournoi.score_j0}')
+        # print(f'tournoi.score_j0: {tournoi.score_j0}')
 
         match_m1_r2 = Match(idtn, num_round, match.joueur0, match.joueur1)
         print()
-        print(f'----------[{match_m1_r2.nom_match}]----------')
+        # print(f'----------[{match_m1_r2.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur0} vs Joueur: {joueur1}')
         match.paire = tuple[(), ()]
-        match.paire1 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
-        print(match.paire1)
+        match.paire1_r2 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
+        print(match.paire1_r2)
 
         print()
         if match.score0 > match.score1:
@@ -1463,9 +1522,10 @@ class Controleur:
 
         match_m2_r2 = Match(idtn, num_round, match.joueur2, match.joueur3)
         print()
-        print(f'----------[{match_m2_r2.nom_match}]----------')
-        match.paire2 = [(match.joueur2, match.score2), (match.joueur3, match.score3)]
-        print(match.paire2)
+        # print(f'----------[{match_m2_r2.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur2} vs Joueur: {joueur3}')
+        match.paire2_r2 = [(match.joueur2, match.score2), (match.joueur3, match.score3)]
+        print(match.paire2_r2)
 
         print()
         if match.score2 > match.score3:
@@ -1479,9 +1539,10 @@ class Controleur:
 
         match_m3_r2 = Match(idtn, num_round, match.joueur4, match.joueur5)
         print()
-        print(f'----------[{match_m3_r2.nom_match}]----------')
-        match.paire3 = [(match.joueur4, match.score4), (match.joueur5, match.score5)]
-        print(match.paire3)
+        # print(f'----------[{match_m3_r2.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur4} vs Joueur: {joueur5}')
+        match.paire3_r2 = [(match.joueur4, match.score4), (match.joueur5, match.score5)]
+        print(match.paire3_r2)
 
         print()
         if match.score4 > match.score5:
@@ -1495,9 +1556,10 @@ class Controleur:
 
         match_m4_r2 = Match(idtn, num_round, match.joueur6, match.joueur7)
         print()
-        print(f'----------[{match_m4_r2.nom_match}]----------')
-        match.paire4 = [(match.joueur6, match.score6), (match.joueur7, match.score7)]
-        print(match.paire4)
+        # print(f'----------[{match_m4_r2.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur6} vs Joueur: {joueur7}')
+        match.paire4_r2 = [(match.joueur6, match.score6), (match.joueur7, match.score7)]
+        print(match.paire4_r2)
 
         print()
         if match.score6 > match.score7:
@@ -1509,10 +1571,10 @@ class Controleur:
 
         match_m4_r2.lj_r2 = datatournois[f'{idtn}'][0]["lj_r2"]
 
-        tournoi.score_m1_r2 = match.paire1  # Tuple à stocker dans datatournois !!!!!!
-        tournoi.score_m2_r2 = match.paire2
-        tournoi.score_m3_r2 = match.paire3
-        tournoi.score_m4_r2 = match.paire4
+        tournoi.score_m1_r2 = match.paire1_r2
+        tournoi.score_m2_r2 = match.paire2_r2
+        tournoi.score_m3_r2 = match.paire3_r2
+        tournoi.score_m4_r2 = match.paire4_r2
 
         time.sleep(0.8)
 
@@ -1527,8 +1589,8 @@ class Controleur:
 
             # pas plus de 10 joueurs car problème recup 2 digits lors des matchs/scores/points !!!!
 
-        print(sorted(liste_joueurs_int, reverse=False))
-        print(f"liste_joueurs_int: {liste_joueurs_int}")
+        # print(sorted(liste_joueurs_int, reverse=False))
+        # print(f"liste_joueurs_int: {liste_joueurs_int}")
 
         for i in liste_joueurs_int:
             setattr(match, "joueur" + str(i), liste_joueurs_int[i])
@@ -1671,7 +1733,6 @@ class Controleur:
         elif match.joueur7 == 7:
             tournoi.score_j7 += match.score7
 
-
         joueursdict2 = [
             {"nom": datajoueurs[f'{match.joueur0}'][0]["nom"] + " " + datajoueurs[f'{match.joueur0}'][0]["prenom"],
              "idj": match.joueur0, "points": match.score0, "pts total": tournoi.score_j0},
@@ -1692,7 +1753,7 @@ class Controleur:
             ]
         # score_r2 contient les points qui se mettent à jour apres chaque match !!!
 
-        print(f'tournoi.score_j0: {tournoi.score_j0}')
+        # print(f'tournoi.score_j0: {tournoi.score_j0}')
 
         # scores_dict = [
         #     {"nom": datajoueurs[f'{tournoi.score_m1_r2[0][0]}'][0]["nom"], "pts": tournoi.score_j0}
@@ -1706,7 +1767,7 @@ class Controleur:
         for x1 in joueursdict_tries2:
             classement2.append([position, x1["nom"], x1["idj"], x1["points"], x1["pts total"]])
             position += 1
-        print(f'classement: {classement2}')
+        # print(f'classement: {classement2}')
         self.vue.afficher_classement(num_round, classement2)
 
         time.sleep(0.8)
@@ -1724,13 +1785,14 @@ class Controleur:
         print(f'num_round: {num_round}')
         update_tournoi(datatournois)
 
-
         self.creer_tour3()
 
     def liste_matchs_auto_r3(self):
         """ Permet de lister les matchs en fonction"""
-        self.infos = "infos"  # juste pour enlever erreur creation méthode statique !
 
+        self.infos = "infos"  # juste pour enlever erreur creation méthode statique !
+        with open("../modele/data/tournaments/joueurs.json", "r") as f:
+            datajoueurs = json.load(f)
         with open("../modele/data/tournaments/tournois.json", "r") as f:
             datatournois = json.load(f)
 
@@ -1769,7 +1831,7 @@ class Controleur:
         match.score6 = 0.0
         match.score7 = 0.0
 
-        print(f'tournoi.matchs_r3{tournoi.matchs_r3}')
+        # print(f'tournoi.matchs_r3{tournoi.matchs_r3}')
 
         # print(tournoi.lj_r3)
 
@@ -1785,9 +1847,23 @@ class Controleur:
 
         rep_scores = self.vue.prompt_quest_liste_match()
 
+        # print(liste_joueurs)
+
+        joueur0 = datajoueurs[f'{liste_joueurs[0]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[0]}'][0]["prenom"]
+        joueur1 = datajoueurs[f'{liste_joueurs[1]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[1]}'][0]["prenom"]
+        joueur2 = datajoueurs[f'{liste_joueurs[2]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[2]}'][0]["prenom"]
+        joueur3 = datajoueurs[f'{liste_joueurs[3]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[3]}'][0]["prenom"]
+        joueur4 = datajoueurs[f'{liste_joueurs[4]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[4]}'][0]["prenom"]
+        joueur5 = datajoueurs[f'{liste_joueurs[5]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[5]}'][0]["prenom"]
+        joueur6 = datajoueurs[f'{liste_joueurs[6]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[6]}'][0]["prenom"]
+        joueur7 = datajoueurs[f'{liste_joueurs[7]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[7]}'][0]["prenom"]
+
+        self.vue.afficher_matchs_liste_match(num_round, joueur0, joueur1, joueur2, joueur3,
+                                             joueur4, joueur5, joueur6, joueur7)
+
         # retourne 1: oui ou 2: non
         if rep_scores == 1:  # manuel
-            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match(joueur0, joueur2, joueur4, joueur6)
             match.score0 = score0
             match.score2 = score2
             match.score4 = score4
@@ -1866,10 +1942,11 @@ class Controleur:
 
         match_m1_r3 = Match(idtn, num_round, match.joueur0, match.joueur1)
         print()
-        print(f'----------[{match_m1_r3.nom_match}]----------')
+        # print(f'----------[{match_m1_r3.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur0} vs Joueur: {joueur1}')
         match.paire = tuple[(), ()]
-        match.paire1 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
-        print(match.paire1)
+        match.paire1_r3 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
+        print(match.paire1_r3)
 
         print()
         if match.score0 > match.score1:
@@ -1883,9 +1960,10 @@ class Controleur:
 
         match_m2_r3 = Match(idtn, num_round, match.joueur2, match.joueur3)
         print()
-        print(f'----------[{match_m2_r3.nom_match}]----------')
-        match.paire2 = [(match.joueur2, match.score2), (match.joueur3, match.score3)]
-        print(match.paire2)
+        # print(f'----------[{match_m2_r3.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur2} vs Joueur: {joueur3}')
+        match.paire2_r3 = [(match.joueur2, match.score2), (match.joueur3, match.score3)]
+        print(match.paire2_r3)
 
         print()
         if match.score2 > match.score3:
@@ -1899,9 +1977,10 @@ class Controleur:
 
         match_m3_r3 = Match(idtn, num_round, match.joueur4, match.joueur5)
         print()
-        print(f'----------[{match_m3_r3.nom_match}]----------')
-        match.paire3 = [(match.joueur4, match.score4), (match.joueur5, match.score5)]
-        print(match.paire3)
+        # print(f'----------[{match_m3_r3.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur4} vs Joueur: {joueur5}')
+        match.paire3_r3 = [(match.joueur4, match.score4), (match.joueur5, match.score5)]
+        print(match.paire3_r3)
 
         print()
         if match.score4 > match.score5:
@@ -1915,9 +1994,10 @@ class Controleur:
 
         match_m4_r3 = Match(idtn, num_round, match.joueur6, match.joueur7)
         print()
-        print(f'----------[{match_m4_r3.nom_match}]----------')
-        match.paire4 = [(match.joueur6, match.score6), (match.joueur7, match.score7)]
-        print(match.paire4)
+        # print(f'----------[{match_m4_r3.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur6} vs Joueur: {joueur7}')
+        match.paire4_r3 = [(match.joueur6, match.score6), (match.joueur7, match.score7)]
+        print(match.paire4_r3)
 
         print()
         if match.score6 > match.score7:
@@ -1929,10 +2009,10 @@ class Controleur:
 
         match_m4_r3.lj_r3 = datatournois[f'{idtn}'][0]["lj_r3"]
 
-        tournoi.score_m1_r3 = match.paire1  # Tuple à stocker dans datatournois !!!!!!
-        tournoi.score_m2_r3 = match.paire2
-        tournoi.score_m3_r3 = match.paire3
-        tournoi.score_m4_r3 = match.paire4
+        tournoi.score_m1_r3 = match.paire1_r3
+        tournoi.score_m2_r3 = match.paire2_r3
+        tournoi.score_m3_r3 = match.paire3_r3
+        tournoi.score_m4_r3 = match.paire4_r3
 
         time.sleep(0.8)
 
@@ -1947,8 +2027,8 @@ class Controleur:
 
             # pas plus de 10 joueurs car problème recup 2 digits lors des matchs/scores/points !!!!
 
-        print(sorted(liste_joueurs_int, reverse=False))
-        print(f"liste_joueurs_int: {liste_joueurs_int}")
+        # print(sorted(liste_joueurs_int, reverse=False))
+        # print(f"liste_joueurs_int: {liste_joueurs_int}")
 
         for i in liste_joueurs_int:
             setattr(match, "joueur" + str(i), liste_joueurs_int[i])
@@ -2142,8 +2222,10 @@ class Controleur:
 
     def liste_matchs_auto_r4(self):
         """ Permet de lister les matchs en fonction"""
-        self.infos = "infos"  # juste pour enlever erreur creation méthode statique !
 
+        self.infos = "infos"  # juste pour enlever erreur creation méthode statique !
+        with open("../modele/data/tournaments/joueurs.json", "r") as f:
+            datajoueurs = json.load(f)
         with open("../modele/data/tournaments/tournois.json", "r") as f:
             datatournois = json.load(f)
 
@@ -2182,7 +2264,7 @@ class Controleur:
         match.score6 = 0.0
         match.score7 = 0.0
 
-        print(f'tournoi.matchs_r4{tournoi.matchs_r4}')
+        # print(f'tournoi.matchs_r4{tournoi.matchs_r4}')
 
         # print(tournoi.lj_r4)
 
@@ -2198,9 +2280,23 @@ class Controleur:
 
         rep_scores = self.vue.prompt_quest_liste_match()
 
+        # print(liste_joueurs)
+
+        joueur0 = datajoueurs[f'{liste_joueurs[0]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[0]}'][0]["prenom"]
+        joueur1 = datajoueurs[f'{liste_joueurs[1]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[1]}'][0]["prenom"]
+        joueur2 = datajoueurs[f'{liste_joueurs[2]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[2]}'][0]["prenom"]
+        joueur3 = datajoueurs[f'{liste_joueurs[3]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[3]}'][0]["prenom"]
+        joueur4 = datajoueurs[f'{liste_joueurs[4]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[4]}'][0]["prenom"]
+        joueur5 = datajoueurs[f'{liste_joueurs[5]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[5]}'][0]["prenom"]
+        joueur6 = datajoueurs[f'{liste_joueurs[6]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[6]}'][0]["prenom"]
+        joueur7 = datajoueurs[f'{liste_joueurs[7]}'][0]["nom"] + " " + datajoueurs[f'{liste_joueurs[7]}'][0]["prenom"]
+
+        self.vue.afficher_matchs_liste_match(num_round, joueur0, joueur1, joueur2, joueur3,
+                                             joueur4, joueur5, joueur6, joueur7)
+
         # retourne 1: oui ou 2: non
         if rep_scores == 1:  # manuel
-            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match()
+            score0, score2, score4, score6 = self.vue.prompt_scores_liste_match(joueur0, joueur2, joueur4, joueur6)
             match.score0 = score0
             match.score2 = score2
             match.score4 = score4
@@ -2279,10 +2375,11 @@ class Controleur:
 
         match_m1_r4 = Match(idtn, num_round, match.joueur0, match.joueur1)
         print()
-        print(f'----------[{match_m1_r4.nom_match}]----------')
+        # print(f'----------[{match_m1_r4.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur0} vs Joueur: {joueur1}')
         match.paire = tuple[(), ()]
-        match.paire1 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
-        print(match.paire1)
+        match.paire1_r4 = [(match.joueur0, match.score0), (match.joueur1, match.score1)]
+        print(match.paire1_r4)
 
         print()
         if match.score0 > match.score1:
@@ -2296,9 +2393,10 @@ class Controleur:
 
         match_m2_r4 = Match(idtn, num_round, match.joueur2, match.joueur4)
         print()
-        print(f'----------[{match_m2_r4.nom_match}]----------')
-        match.paire2 = [(match.joueur2, match.score2), (match.joueur3, match.score3)]
-        print(match.paire2)
+        # print(f'----------[{match_m2_r4.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur2} vs Joueur: {joueur3}')
+        match.paire2_r4 = [(match.joueur2, match.score2), (match.joueur3, match.score3)]
+        print(match.paire2_r4)
 
         print()
         if match.score2 > match.score3:
@@ -2312,9 +2410,10 @@ class Controleur:
 
         match_m3_r4 = Match(idtn, num_round, match.joueur4, match.joueur5)
         print()
-        print(f'----------[{match_m3_r4.nom_match}]----------')
-        match.paire3 = [(match.joueur4, match.score4), (match.joueur5, match.score5)]
-        print(match.paire3)
+        # print(f'----------[{match_m3_r4.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur4} vs Joueur: {joueur5}')
+        match.paire3_r4 = [(match.joueur4, match.score4), (match.joueur5, match.score5)]
+        print(match.paire3_r4)
 
         print()
         if match.score4 > match.score5:
@@ -2328,9 +2427,10 @@ class Controleur:
 
         match_m4_r4 = Match(idtn, num_round, match.joueur6, match.joueur7)
         print()
-        print(f'----------[{match_m4_r4.nom_match}]----------')
-        match.paire4 = [(match.joueur6, match.score6), (match.joueur7, match.score7)]
-        print(match.paire4)
+        # print(f'----------[{match_m4_r4.nom_match}]----------')
+        print(f'Match Round{num_round}: Joueur: {joueur6} vs Joueur: {joueur7}')
+        match.paire4_r4 = [(match.joueur6, match.score6), (match.joueur7, match.score7)]
+        print(match.paire4_r4)
 
         print()
         if match.score6 > match.score7:
@@ -2342,10 +2442,10 @@ class Controleur:
 
         match_m4_r4.lj_r4 = datatournois[f'{idtn}'][0]["lj_r4"]
 
-        tournoi.score_m1_r4 = match.paire1  # Tuple à stocker dans datatournois !!!!!!
-        tournoi.score_m2_r4 = match.paire2
-        tournoi.score_m3_r4 = match.paire3
-        tournoi.score_m4_r4 = match.paire4
+        tournoi.score_m1_r4 = match.paire1_r4
+        tournoi.score_m2_r4 = match.paire2_r4
+        tournoi.score_m3_r4 = match.paire3_r4
+        tournoi.score_m4_r4 = match.paire4_r4
 
         time.sleep(0.8)
 
@@ -2360,8 +2460,8 @@ class Controleur:
 
             # pas plus de 10 joueurs car problème recup 2 digits lors des matchs/scores/points !!!!
 
-        print(sorted(liste_joueurs_int, reverse=False))
-        print(f"liste_joueurs_int: {liste_joueurs_int}")
+        # print(sorted(liste_joueurs_int, reverse=False))
+        # print(f"liste_joueurs_int: {liste_joueurs_int}")
 
         for i in liste_joueurs_int:
             setattr(match, "joueur" + str(i), liste_joueurs_int[i])
@@ -2564,10 +2664,10 @@ class Controleur:
         rep = "o"
         while rep == "o":
 
-            nom, prenom, daten, yon = self.vue.afficher_ajouter_joueurs()
+            nom, prenom, idx, daten, yon = self.vue.afficher_ajouter_joueurs()
 
-            joueur = Joueur(nom, prenom, daten)
-            print(joueur.nom, joueur.prenom, joueur.daten)
+            # joueurx = Joueur(nom, prenom, idx, daten)
+            # print(joueur.nom, joueur.prenom, joueur.idx, joueur.daten)
 
             if yon == 1:
                 print("Ajout d'un autre joueur...\n")
@@ -2688,8 +2788,17 @@ class Controleur:
             joueur6 = Joueur(nom=datajoueurs["6"][0]["nom"], prenom=datajoueurs["6"][0]["prenom"], idx="6", daten=None)
             joueur7 = Joueur(nom=datajoueurs["7"][0]["nom"], prenom=datajoueurs["7"][0]["prenom"], idx="7", daten=None)
 
+            print(match.score0)
+            print(match.score1)
+            print(match.score2)
+            print(match.score3)
+            print(match.score4)
+            print(match.score5)
+            print(match.score6)
+            print(match.score7)
+
         joueursdict = [
-            {"nom": joueur0.nom + " " + joueur0.prenom, "idj": joueur0.idx, "points": joueur0.idx,
+            {"nom": joueur0.nom + " " + joueur0.prenom, "idj": joueur0.idx, "points": match.score0,
              "pts total": tournoi.score_j0},
             {"nom": joueur1.nom + " " + joueur1.prenom, "idj": joueur1.idx, "points": match.score1,
              "pts total": tournoi.score_j1},
@@ -2895,6 +3004,22 @@ class Controleur:
             tournoi.score_m2_r4 = datatournois[f'{idt_tournoi}'][0]["score_m2_r4"]
             tournoi.score_m3_r4 = datatournois[f'{idt_tournoi}'][0]["score_m3_r4"]
             tournoi.score_m4_r4 = datatournois[f'{idt_tournoi}'][0]["score_m4_r4"]
+            match.paire1_r1 = datatournois[f'{idt_tournoi}'][0]["paire1_r1"]
+            match.paire2_r1 = datatournois[f'{idt_tournoi}'][0]["paire2_r1"]
+            match.paire3_r1 = datatournois[f'{idt_tournoi}'][0]["paire3_r1"]
+            match.paire4_r1 = datatournois[f'{idt_tournoi}'][0]["paire4_r1"]
+            match.paire1_r2 = datatournois[f'{idt_tournoi}'][0]["paire1_r2"]
+            match.paire2_r2 = datatournois[f'{idt_tournoi}'][0]["paire2_r2"]
+            match.paire3_r2 = datatournois[f'{idt_tournoi}'][0]["paire3_r2"]
+            match.paire4_r2 = datatournois[f'{idt_tournoi}'][0]["paire4_r2"]
+            match.paire1_r3 = datatournois[f'{idt_tournoi}'][0]["paire1_r3"]
+            match.paire2_r3 = datatournois[f'{idt_tournoi}'][0]["paire2_r3"]
+            match.paire3_r3 = datatournois[f'{idt_tournoi}'][0]["paire3_r3"]
+            match.paire4_r3 = datatournois[f'{idt_tournoi}'][0]["paire4_r3"]
+            match.paire1_r4 = datatournois[f'{idt_tournoi}'][0]["paire1_r4"]
+            match.paire2_r4 = datatournois[f'{idt_tournoi}'][0]["paire2_r4"]
+            match.paire3_r4 = datatournois[f'{idt_tournoi}'][0]["paire3_r4"]
+            match.paire4_r4 = datatournois[f'{idt_tournoi}'][0]["paire4_r4"]
             tournoi.idtn = datatournois[f'{idt_tournoi}'][0]["idtn"]
 
     def raz_scores(self):
@@ -3117,6 +3242,22 @@ def update_tournoi(datatournois):
         "dateh_fin_r3": tour3.dateh_fin,
         "dateh_deb_r4": tour4.dateh_deb,
         "dateh_fin_r4": tour4.dateh_fin,
+        "paire1_r1": match.paire1_r1,
+        "paire2_r1": match.paire2_r1,
+        "paire3_r1": match.paire3_r1,
+        "paire4_r1": match.paire4_r1,
+        "paire1_r2": match.paire1_r2,
+        "paire2_r2": match.paire2_r2,
+        "paire3_r2": match.paire3_r2,
+        "paire4_r2": match.paire4_r2,
+        "paire1_r3": match.paire1_r3,
+        "paire2_r3": match.paire2_r3,
+        "paire3_r3": match.paire3_r3,
+        "paire4_r3": match.paire4_r3,
+        "paire1_r4": match.paire1_r4,
+        "paire2_r4": match.paire2_r4,
+        "paire3_r4": match.paire3_r4,
+        "paire4_r4": match.paire4_r4,
         "idtn": tournoi.idtn
     }]}
     datatournois.update(update)
@@ -3126,7 +3267,7 @@ def update_tournoi(datatournois):
 
         # print(datatournois)
 
-    print("Sauvegarde effectuée")
+    # print("Sauvegarde effectuée")
 
 
 def quitter():

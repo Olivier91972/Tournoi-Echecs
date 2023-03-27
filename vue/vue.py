@@ -150,7 +150,6 @@ class Vue:
         print(f'Début du Round3:{tour3.dateh_deb}')
         print(f'Round2 Terminé !----------:{tour2.dateh_fin}')
 
-
     @staticmethod
     def afficher_creer_tour4():
         """Permet d'afficher la création du tour1 (Round1)"""
@@ -183,7 +182,7 @@ class Vue:
         """ Affiche la question pour la selection de 8 joueurs"""
 
         print("### Tip's pour import des 8 premiers joueurs: 0,1,2,3,4,5,6,7 ###")
-        input_idx = input("Sélectionnez l'id des joueurs exemple: 1,3,4,6...:\n"
+        input_idx = input("Sélectionnez l'id des 8 joueurs exemple: 1,3,4,6...:\n"
                           "pour le Round1\n")
         return input_idx
 
@@ -191,34 +190,45 @@ class Vue:
     def prompt_quest_liste_match():
         """Permet à l'utilisateur de saisir manuellement ou non les scores des joueurs"""
         rep_scores = int(input("\n----------[Scores]----------\n"
-                                "Souhaitez vous ajouter les scores manuellement ?\n"
+                               "Souhaitez vous ajouter les scores manuellement ?\n"
                                "1: Oui\n"
                                "0: Non\n"))
         return rep_scores
 
     @staticmethod
-    def prompt_scores_liste_match():
+    def afficher_matchs_liste_match(num_round, joueur0, joueur1, joueur2, joueur3,
+                                    joueur4, joueur5, joueur6, joueur7):
+        """Affiche les matchs du round"""
+
+        print("\n----------[Scores]----------\n")
+        print(f'Match Round{num_round}: -----Joueur: {joueur0} vs Joueur: {joueur1}-----\n')
+        print(f'Match Round{num_round}: -----Joueur: {joueur2} vs Joueur: {joueur3}-----\n')
+        print(f'Match Round{num_round}: -----Joueur: {joueur4} vs Joueur: {joueur5}-----\n')
+        print(f'Match Round{num_round}: -----Joueur: {joueur6} vs Joueur: {joueur7}-----\n')
+
+    @staticmethod
+    def prompt_scores_liste_match(joueur0, joueur2, joueur4, joueur6):
         """Permet à l'utilisateur de saisir les scores des joueurs"""
         score0 = float(input("\n----------[Scores]----------\n"
-                           "Entrez le score du joueur0\n"
-                           "1.0\n"
-                           "0.5\n"
-                           "0.0\n"))
+                             f"Entrez le score du joueur: {joueur0}'\n"
+                             "1.0\n"
+                             "0.5\n"
+                             "0.0\n"))
         score2 = float(input("\n----------[Scores]----------\n"
-                           "Entrez le score du joueur2\n"
-                           "1.0\n"
-                           "0.5\n"
-                           "0.0\n"))
+                             f"Entrez le score du joueur: {joueur2}\n"
+                             "1.0\n"
+                             "0.5\n"
+                             "0.0\n"))
         score4 = float(input("\n----------[Scores]----------\n"
-                           "Entrez le score du joueur4\n"
-                           "1.0\n"
-                           "0.5\n"
-                           "0.0\n"))
+                             f"Entrez le score du joueur: {joueur4}\n"
+                             "1.0\n"
+                             "0.5\n"
+                             "0.0\n"))
         score6 = float(input("\n----------[Scores]----------\n"
-                           "Entrez le score du joueur6\n"
-                           "1.0\n"
-                           "0.5\n"
-                           "0.0\n"))
+                             f"Entrez le score du joueur: {joueur6}\n"
+                             "1.0\n"
+                             "0.5\n"
+                             "0.0\n"))
         return score0, score2, score4, score6
 
     @staticmethod
@@ -293,11 +303,11 @@ class Vue:
     @staticmethod
     def afficher_gagnant(classement):
         """Affiche le gagnant du tournoi"""
-        print(classement)
-        gagnant = f'classement{classement[0][1]} avec {classement[0][4]} points !'
+        # print(classement)
+        gagnant = f'{classement[0][1]} avec {classement[0][4]} points !'
 
         print("\n--------------------[Gagnant]--------------------\n")
-        print(f"Le gagnant du tournoi est {gagnant}\n")
+        print(f"Le gagnant du tournoi est: {gagnant}\n")
 
     def generer_paires(self, array):
         self.infos = "infos"
@@ -307,7 +317,7 @@ class Vue:
             for j in range(i + 1, len(array)):
                 results.append(array[i] + array[j])
 
-        print(results)
+        # print(results)
 
         # generer_paires([2, 4, 6, 8])  # ["A", "B", "C", "D"]
 
@@ -376,7 +386,7 @@ class Vue:
         return input_num_t
 
     @staticmethod
-    def afficher_stat3(input_num_t, liste_inp):
+    def afficher_stat3(liste_inp):
         """Affiche la statistique n°3 : nom et dates d’un tournoi donné"""
 
         table = liste_inp
@@ -399,4 +409,3 @@ class Vue:
         table = rounds_matchs
         headers = ["Round", "Match1", "Match2", "Match3", "Match4"]
         print(tabulate(table, headers, tablefmt="grid"))
-
